@@ -29,11 +29,11 @@ export function parseSlipOpinions(html) {
     if (di < 0) continue;
     const docket = text[di + 1];
     if (!/^\d{2}[-A]\d+/i.test(docket || "")) continue;
-    const nameCell = cells[di + 2] || "";
-    const href = (nameCell.match(/href="([^"]+\.pdf)"/i) || [])[1];
+    const href = (row.match(/href=["']([^"']*\.pdf[^"']*)["']/i) || [])[1];
     const [m, d, y] = text[di].split("/").map(Number);
     const year = y < 100 ? 2000 + y : y;
-    const judge = (text[di + 4] || "").trim();
+    // The justice column holds initials (e.g. "G", "KB", "PC"); its position varies by year.
+    const judge = text.slice(di + 3).find((t) => /^[A-Z]{1,3}$/.test(t)) || "";
     out.push({
       date: `${year}-${String(m).padStart(2, "0")}-${String(d).padStart(2, "0")}`,
       docket: docket.split(/\s|,/)[0],

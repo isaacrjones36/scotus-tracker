@@ -1,0 +1,1077 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>SCOTUS Tracker</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<meta name="description" content="Track the U.S. Supreme Court's current term: the docket, argument calendar, decisions, emergency docket, justices and stats.">
+<meta name="theme-color" content="#1c2430">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" href="icon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="icon-180.png">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="SCOTUS">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:ital,wght@0,400;0,500;0,600;1,400&display=swap">
+<style>
+/* Layout: an inscribed masthead band over a sticky tab rail; each tab is a single working view
+   built from cards only where an item is a distinct record (a case, a justice). */
+:root {
+  --bg: #f3f4f1;          /* marble */
+  --surface: #ffffff;
+  --sunk: #e9ebe6;
+  --ink: #1c2430;         /* slate ink */
+  --muted: #5a6371;
+  --line: #d8dbd4;
+  --accent: #7d1f2c;      /* courtroom curtain */
+  --accent-soft: #f4e5e7;
+  --band: #1c2430;
+  --band-ink: #eef0ec;
+  --band-muted: #a9b1bc;
+  --granted: #5a6371;
+  --scheduled: #2c5a88;
+  --argued: #9a6200;
+  --decided: #2f6a4c;
+  --dismissed: #8a8f97;
+  --scheduled-soft: #e3ecf5;
+  --argued-soft: #f6ecd9;
+  --decided-soft: #e2efe7;
+  --granted-soft: #eceef0;
+  --focus: #2c5a88;
+  --font-display: "Cinzel", "Trajan Pro", Georgia, "Times New Roman", serif;
+  --font-body: "IBM Plex Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-mono: "IBM Plex Mono", ui-monospace, "SFMono-Regular", Menlo, monospace;
+  --r: 6px;
+  --step--1: 0.8125rem;
+  --step-0: 0.9375rem;
+  --step-1: 1.125rem;
+  --step-2: 1.375rem;
+  --step-3: 1.875rem;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #11151b; --surface: #181e26; --sunk: #0d1116; --ink: #e6e8e3; --muted: #9aa3ae; --line: #2a323d;
+    --accent: #e0848f; --accent-soft: #3a1f25; --band: #0b0e13; --band-ink: #eef0ec; --band-muted: #8f98a3;
+    --granted: #a3abb5; --scheduled: #86b2de; --argued: #e0b25c; --decided: #7cc39c; --dismissed: #7d838b;
+    --scheduled-soft: #1b2a3a; --argued-soft: #33270f; --decided-soft: #16291f; --granted-soft: #222831;
+    --focus: #86b2de; color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #11151b; --surface: #181e26; --sunk: #0d1116; --ink: #e6e8e3; --muted: #9aa3ae; --line: #2a323d;
+  --accent: #e0848f; --accent-soft: #3a1f25; --band: #0b0e13; --band-ink: #eef0ec; --band-muted: #8f98a3;
+  --granted: #a3abb5; --scheduled: #86b2de; --argued: #e0b25c; --decided: #7cc39c; --dismissed: #7d838b;
+  --scheduled-soft: #1b2a3a; --argued-soft: #33270f; --decided-soft: #16291f; --granted-soft: #222831;
+  --focus: #86b2de; color-scheme: dark;
+}
+
+* { box-sizing: border-box; }
+[hidden] { display: none !important; }
+:root { padding-top: env(safe-area-inset-top, 0px); padding-bottom: env(safe-area-inset-bottom, 0px); }
+img { max-width: 100%; }
+
+html { -webkit-text-size-adjust: 100%; }
+body { background: var(--bg); color: var(--ink); font-family: var(--font-body); font-size: var(--step-0); line-height: 1.5; margin: 0; }
+body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-area-inset-top, 0px); z-index: 10; background: var(--band); }
+a { color: var(--accent); text-underline-offset: 2px; }
+button, input, select { font: inherit; color: inherit; }
+:focus-visible { outline: 2px solid var(--focus); outline-offset: 2px; }
+h1, h2, h3 { text-wrap: balance; margin: 0; }
+.wrap { max-width: 1120px; margin: 0 auto; padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); }
+.mono { font-family: var(--font-mono); font-variant-numeric: tabular-nums; }
+.muted { color: var(--muted); }
+.small { font-size: var(--step--1); }
+
+/* Masthead */
+.mast { background: var(--band); color: var(--band-ink); }
+.mast .wrap { padding-block: 20px 16px; display: flex; flex-wrap: wrap; align-items: flex-end; justify-content: space-between; gap: 12px 24px; }
+.brand { display: grid; gap: 2px; }
+.motto { font-family: var(--font-display); letter-spacing: 0.32em; font-size: 0.6875rem; color: var(--band-muted); text-transform: uppercase; }
+.wordmark { font-family: var(--font-display); font-weight: 600; font-size: clamp(1.6rem, 4.5vw, 2.4rem); letter-spacing: 0.08em; line-height: 1.1; }
+.term-line { font-size: var(--step--1); color: var(--band-muted); }
+.term-line b { color: var(--band-ink); font-weight: 500; }
+.mast-tools { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; }
+.pill-live { display: inline-flex; align-items: center; gap: 8px; font-size: var(--step--1); border: 1px solid #3a4452; border-radius: 999px; padding: 4px 12px; color: var(--band-ink); }
+.pill-live i { width: 8px; height: 8px; border-radius: 50%; background: #8f98a3; display: inline-block; }
+.pill-live[data-state="live"] i { background: #5fc28d; box-shadow: 0 0 0 3px rgba(95,194,141,.18); }
+.btn-band { background: transparent; border: 1px solid #3a4452; color: var(--band-ink); border-radius: 999px; padding: 4px 12px; font-size: var(--step--1); cursor: pointer; }
+.btn-band:hover { border-color: var(--band-muted); }
+
+/* Tabs */
+.tabs { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 5; background: var(--surface); border-bottom: 1px solid var(--line); }
+.tabs .wrap { display: flex; gap: 4px; overflow-x: auto; scrollbar-width: none; }
+.tabs .wrap::-webkit-scrollbar { display: none; }
+.tab { flex: none; background: none; border: 0; border-bottom: 2px solid transparent; padding: 12px 12px 10px; cursor: pointer; color: var(--muted); font-weight: 500; white-space: nowrap; }
+.tab:hover { color: var(--ink); }
+.tab[aria-selected="true"] { color: var(--ink); border-bottom-color: var(--accent); }
+.tab .count { font-family: var(--font-mono); font-size: 0.75rem; color: var(--muted); margin-left: 4px; }
+
+main .wrap { padding-block: 24px 48px; }
+.view { display: grid; gap: 28px; }
+.view-head { display: grid; gap: 6px; }
+.eyebrow { font-family: var(--font-display); font-size: 0.75rem; letter-spacing: 0.22em; text-transform: uppercase; color: var(--accent); font-weight: 600; }
+.view-head h2 { font-size: var(--step-3); font-weight: 600; letter-spacing: -0.01em; line-height: 1.2; }
+.view-head p { margin: 0; color: var(--muted); max-width: 68ch; }
+.section-title { font-family: var(--font-display); font-weight: 600; font-size: var(--step-1); letter-spacing: 0.06em; display: flex; align-items: baseline; justify-content: space-between; gap: 12px; flex-wrap: wrap; border-bottom: 1px solid var(--line); padding-bottom: 8px; }
+.section-title small { font-family: var(--font-body); letter-spacing: 0; font-weight: 400; font-size: var(--step--1); color: var(--muted); }
+.stack { display: grid; gap: 12px; }
+
+/* Overview */
+.hero { display: grid; grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr); gap: 20px; }
+@media (max-width: 760px) { .hero { grid-template-columns: 1fr; } }
+.next { background: var(--surface); border: 1px solid var(--line); border-radius: var(--r); padding: 20px; display: grid; gap: 14px; }
+.next-top { display: flex; align-items: baseline; gap: 16px; flex-wrap: wrap; }
+.days { font-family: var(--font-display); font-weight: 700; font-size: 3.25rem; line-height: 1; color: var(--accent); font-variant-numeric: tabular-nums; }
+.next-top div { display: grid; }
+.next-top strong { font-size: var(--step-1); }
+.next ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 8px; }
+.next li { display: grid; grid-template-columns: 5.5rem minmax(0, 1fr); gap: 10px; align-items: baseline; }
+.linkish { background: none; border: 0; padding: 0; color: var(--ink); text-align: left; cursor: pointer; font-weight: 500; text-decoration: underline; text-decoration-color: var(--line); text-underline-offset: 3px; }
+.linkish:hover { text-decoration-color: var(--accent); }
+
+.pipeline { display: grid; gap: 12px; align-content: start; }
+.pipe-bar { display: flex; height: 14px; border-radius: 3px; overflow: hidden; background: var(--sunk); }
+.pipe-bar span { display: block; height: 100%; }
+.pipe-legend { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px 16px; margin: 0; }
+.pipe-legend button { display: grid; grid-template-columns: 10px minmax(0, 1fr) auto; gap: 8px; align-items: center; background: none; border: 0; padding: 6px 0; cursor: pointer; text-align: left; border-bottom: 1px dashed var(--line); }
+.pipe-legend .sw { width: 10px; height: 10px; border-radius: 2px; }
+.pipe-legend b { font-family: var(--font-mono); font-weight: 500; }
+
+.cols { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 28px; }
+@media (max-width: 760px) { .cols { grid-template-columns: 1fr; } }
+.list-plain { list-style: none; margin: 0; padding: 0; display: grid; }
+.list-plain li { padding: 10px 0; border-bottom: 1px solid var(--line); display: grid; gap: 2px; min-width: 0; }
+.list-plain li:last-child { border-bottom: 0; }
+.meta { font-size: var(--step--1); color: var(--muted); }
+
+/* Status pills */
+.status { display: inline-flex; align-items: center; gap: 6px; font-size: 0.75rem; font-weight: 600; letter-spacing: 0.02em; padding: 2px 8px; border-radius: 999px; white-space: nowrap; }
+.status::before { content: ""; width: 6px; height: 6px; border-radius: 50%; background: currentColor; }
+.s-granted { color: var(--granted); background: var(--granted-soft); }
+.s-scheduled { color: var(--scheduled); background: var(--scheduled-soft); }
+.s-argued { color: var(--argued); background: var(--argued-soft); }
+.s-decided { color: var(--decided); background: var(--decided-soft); }
+.s-dismissed { color: var(--dismissed); background: var(--granted-soft); }
+.chip { display: inline-block; font-size: 0.75rem; color: var(--muted); border: 1px solid var(--line); border-radius: 999px; padding: 1px 8px; white-space: nowrap; }
+
+/* Docket */
+.filters { display: grid; gap: 12px; background: var(--surface); border: 1px solid var(--line); border-radius: var(--r); padding: 12px; }
+.filter-row { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; }
+.seg { display: flex; flex-wrap: wrap; gap: 6px; }
+.seg button { border: 1px solid var(--line); background: var(--bg); border-radius: 999px; padding: 4px 12px; cursor: pointer; font-size: var(--step--1); }
+.seg button[aria-pressed="true"] { background: var(--ink); color: var(--bg); border-color: var(--ink); }
+.field { display: flex; align-items: center; gap: 6px; }
+.field input, .field select { border: 1px solid var(--line); background: var(--bg); border-radius: var(--r); padding: 6px 10px; min-width: 0; }
+#q { width: min(320px, 100%); }
+.field-grow { flex: 1 1 220px; }
+.field-grow input { width: 100%; }
+.result-count { font-size: var(--step--1); color: var(--muted); }
+
+.cases { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 330px), 1fr)); gap: 12px; }
+.case { background: var(--surface); border: 1px solid var(--line); border-radius: var(--r); padding: 14px 14px 12px; display: grid; gap: 8px; grid-template-rows: auto auto 1fr auto; min-width: 0; }
+.case-top { display: flex; align-items: center; gap: 8px; justify-content: space-between; }
+.case-top .mono { font-size: var(--step--1); color: var(--muted); }
+.case h3 { font-size: var(--step-0); font-weight: 600; line-height: 1.35; }
+.case h3 button { all: unset; cursor: pointer; }
+.case h3 button:hover { text-decoration: underline; text-decoration-color: var(--accent); text-underline-offset: 3px; }
+.case h3 button:focus-visible { outline: 2px solid var(--focus); outline-offset: 2px; }
+.case p { margin: 0; color: var(--muted); font-size: var(--step--1); display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; }
+.case-foot { display: flex; align-items: center; justify-content: space-between; gap: 8px; flex-wrap: wrap; font-size: var(--step--1); color: var(--muted); border-top: 1px solid var(--line); padding-top: 8px; }
+.case-foot .tags { display: flex; gap: 6px; flex-wrap: wrap; align-items: center; }
+.star { background: none; border: 0; cursor: pointer; padding: 2px; color: var(--muted); line-height: 0; }
+.star svg { width: 18px; height: 18px; }
+.star[aria-pressed="true"] { color: var(--accent); }
+.star[aria-pressed="true"] path { fill: currentColor; }
+.flag { color: var(--accent); font-size: 0.6875rem; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; }
+.empty { padding: 28px; text-align: center; color: var(--muted); border: 1px dashed var(--line); border-radius: var(--r); }
+
+/* Calendar */
+.months { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 300px), 1fr)); gap: 20px; }
+.month { background: var(--surface); border: 1px solid var(--line); border-radius: var(--r); padding: 14px; display: grid; gap: 10px; align-content: start; }
+.month h3 { font-family: var(--font-display); font-size: var(--step-0); letter-spacing: 0.1em; font-weight: 600; }
+.grid7 { display: grid; grid-template-columns: repeat(7, minmax(0, 1fr)); gap: 3px; text-align: center; font-variant-numeric: tabular-nums; }
+.grid7 .dow { font-size: 0.6875rem; color: var(--muted); padding-bottom: 2px; }
+.grid7 .d { font-size: var(--step--1); padding: 6px 0; border-radius: 4px; color: var(--muted); }
+.grid7 .d.arg { background: var(--accent); color: var(--surface); font-weight: 600; cursor: pointer; border: 0; font: inherit; font-size: var(--step--1); }
+.grid7 .d.past.arg { background: var(--accent-soft); color: var(--accent); }
+.grid7 .d.today { outline: 1.5px solid var(--ink); outline-offset: -1.5px; color: var(--ink); }
+.agenda { display: grid; gap: 0; }
+.agenda-day { display: grid; grid-template-columns: 7.5rem minmax(0, 1fr); gap: 14px; padding: 12px 0; border-bottom: 1px solid var(--line); scroll-margin-top: 70px; }
+.agenda-day:last-child { border-bottom: 0; }
+.agenda-day time { font-weight: 600; }
+.agenda-day time span { display: block; font-weight: 400; color: var(--muted); font-size: var(--step--1); }
+.agenda-day ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 6px; }
+.agenda-day li { display: flex; flex-wrap: wrap; gap: 6px 10px; align-items: baseline; }
+@media (max-width: 520px) { .agenda-day { grid-template-columns: 1fr; gap: 6px; } }
+.agenda-day.flash { background: var(--accent-soft); transition: background 1.2s; }
+
+/* Decisions */
+.rulings { display: grid; gap: 0; }
+.ruling { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 6px 20px; padding: 16px 0; border-bottom: 1px solid var(--line); }
+.ruling:last-child { border-bottom: 0; }
+.ruling h3 { font-size: var(--step-1); font-weight: 600; }
+.ruling p { margin: 0; max-width: 72ch; }
+.ruling .meta { grid-column: 1 / -1; }
+.vote { display: grid; gap: 4px; justify-items: end; align-content: start; }
+.vote-num { font-family: var(--font-display); font-weight: 700; font-size: var(--step-2); line-height: 1; }
+.dots { display: flex; gap: 3px; }
+.dots span { width: 18px; display: grid; justify-items: center; gap: 2px; font-size: 0.5625rem; color: var(--muted); font-family: var(--font-mono); }
+.dots i { width: 12px; height: 12px; border-radius: 50%; border: 1.5px solid var(--ink); display: block; }
+.dots i.maj { background: var(--ink); }
+@media (max-width: 560px) { .ruling { grid-template-columns: 1fr; } .vote { justify-items: start; } }
+
+/* Tiles + charts */
+.tiles { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 170px), 1fr)); gap: 12px; }
+.tile { background: var(--surface); border: 1px solid var(--line); border-radius: var(--r); padding: 14px; display: grid; gap: 4px; align-content: start; }
+.tile b { font-family: var(--font-display); font-size: 2rem; line-height: 1.05; font-weight: 700; font-variant-numeric: tabular-nums; }
+.tile span { font-size: var(--step--1); color: var(--muted); }
+.panel { background: var(--surface); border: 1px solid var(--line); border-radius: var(--r); padding: 16px; display: grid; gap: 12px; min-width: 0; }
+.chart-wrap { overflow-x: auto; }
+.chart-wrap svg { display: block; width: 100%; min-width: 420px; height: auto; }
+.hbars { display: grid; gap: 8px; }
+.hbar { display: grid; grid-template-columns: minmax(7rem, 11rem) minmax(0, 1fr) 2.5rem; gap: 10px; align-items: center; font-size: var(--step--1); }
+.hbar .track { background: var(--sunk); height: 10px; border-radius: 2px; overflow: hidden; }
+.hbar .fill { background: var(--ink); height: 100%; border-radius: 2px; }
+.hbar .n { font-family: var(--font-mono); text-align: right; }
+.legend { display: flex; gap: 16px; flex-wrap: wrap; font-size: var(--step--1); color: var(--muted); }
+.legend i { display: inline-block; width: 10px; height: 10px; border-radius: 2px; margin-right: 6px; vertical-align: -1px; }
+.facts { list-style: none; margin: 0; padding: 0; display: grid; gap: 0; }
+.facts li { padding: 10px 0; border-bottom: 1px solid var(--line); display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 12px; align-items: baseline; }
+.facts li:last-child { border-bottom: 0; }
+.facts b { font-family: var(--font-mono); font-weight: 500; text-align: right; }
+
+/* Justices */
+.bench { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 250px), 1fr)); gap: 12px; }
+.justice { background: var(--surface); border: 1px solid var(--line); border-radius: var(--r); padding: 16px; display: grid; gap: 10px; grid-template-rows: auto auto 1fr; }
+.j-head { display: grid; grid-template-columns: 44px minmax(0, 1fr); gap: 12px; align-items: center; }
+.seal { width: 44px; height: 44px; border-radius: 50%; display: grid; place-items: center; font-family: var(--font-display); font-weight: 700; font-size: 0.9375rem; border: 1.5px solid var(--ink); }
+.justice h3 { font-size: var(--step-0); font-weight: 600; line-height: 1.3; }
+.justice dl { margin: 0; display: grid; grid-template-columns: auto minmax(0, 1fr); gap: 4px 12px; font-size: var(--step--1); }
+.justice dt { color: var(--muted); }
+.justice dd { margin: 0; text-align: right; font-variant-numeric: tabular-nums; }
+.j-note { font-size: var(--step--1); border-top: 1px solid var(--line); padding-top: 8px; color: var(--muted); align-self: end; }
+.j-note strong { color: var(--ink); font-weight: 600; }
+
+/* Reading */
+.articles { display: grid; gap: 0; }
+.article { display: grid; grid-template-columns: 6.5rem minmax(0, 1fr); gap: 14px; padding: 14px 0; border-bottom: 1px solid var(--line); }
+.article:last-child { border-bottom: 0; }
+.article time { font-size: var(--step--1); color: var(--muted); font-variant-numeric: tabular-nums; }
+.article a { font-weight: 600; color: var(--ink); text-decoration: none; }
+.article a:hover { color: var(--accent); text-decoration: underline; }
+.article p { margin: 4px 0 0; font-size: var(--step--1); color: var(--muted); }
+.new-badge { font-size: 0.6875rem; font-weight: 600; color: var(--decided); margin-left: 6px; }
+@media (max-width: 520px) { .article { grid-template-columns: 1fr; gap: 2px; } }
+.links-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 220px), 1fr)); gap: 10px; }
+.links-grid a { display: grid; gap: 2px; padding: 12px; border: 1px solid var(--line); border-radius: var(--r); background: var(--surface); color: var(--ink); text-decoration: none; }
+.links-grid a:hover { border-color: var(--accent); }
+.links-grid a span { font-size: var(--step--1); color: var(--muted); }
+
+/* Dialog */
+dialog { border: 1px solid var(--line); border-radius: 10px; padding: 0; background: var(--surface); color: var(--ink); width: min(640px, calc(100vw - 32px)); max-height: calc(100dvh - 48px); }
+dialog::backdrop { background: rgba(10, 14, 20, 0.5); }
+.dlg { display: grid; gap: 16px; padding: 20px; }
+.dlg-head { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 12px; align-items: start; }
+.dlg h2 { font-size: var(--step-2); font-weight: 600; line-height: 1.25; }
+.x { background: var(--sunk); border: 0; border-radius: 50%; width: 32px; height: 32px; cursor: pointer; font-size: 1.1rem; line-height: 1; }
+.dlg p { margin: 0; }
+.timeline { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px; }
+.timeline li { border-top: 3px solid var(--line); padding-top: 8px; display: grid; gap: 2px; font-size: var(--step--1); }
+.timeline li.done { border-top-color: var(--ink); }
+.timeline li.next-step { border-top-color: var(--accent); }
+.timeline b { font-weight: 600; font-size: var(--step-0); }
+.brief-strip { display: grid; gap: 6px; }
+.brief-strip .covers { display: flex; gap: 4px; flex-wrap: wrap; }
+.brief-strip .covers span { font-size: 0.6875rem; padding: 3px 8px; border-radius: 3px; border: 1px solid rgba(0,0,0,.18); color: #1c2430; }
+.dlg-links { display: flex; flex-wrap: wrap; gap: 8px; }
+.dlg-links a { border: 1px solid var(--line); border-radius: 999px; padding: 6px 12px; text-decoration: none; font-size: var(--step--1); color: var(--ink); }
+.dlg-links a:hover { border-color: var(--accent); color: var(--accent); }
+
+footer { border-top: 1px solid var(--line); }
+footer .wrap { padding-block: 20px 32px; display: grid; gap: 8px; font-size: var(--step--1); color: var(--muted); }
+footer p { margin: 0; max-width: 80ch; }
+
+@media (prefers-reduced-motion: reduce) { * { transition: none !important; animation: none !important; } }
+</style>
+</head>
+<body>
+<header class="mast">
+  <div class="wrap">
+    <div class="brand">
+      <span class="motto">Equal Justice Under Law</span>
+      <h1 class="wordmark">SCOTUS Tracker</h1>
+      <span class="term-line" id="termLine"></span>
+    </div>
+    <div class="mast-tools">
+      <span class="pill-live" id="livePill" data-state="snapshot"><i></i><span id="liveText">Saved data</span></span>
+      <button class="btn-band" id="installBtn" type="button" hidden>Install app</button>
+    </div>
+  </div>
+</header>
+
+<nav class="tabs" aria-label="Sections">
+  <div class="wrap" role="tablist" id="tabs"></div>
+</nav>
+
+<main>
+  <div class="wrap">
+    <section class="view" id="view-overview" data-view="overview"></section>
+    <section class="view" id="view-docket" data-view="docket" hidden></section>
+    <section class="view" id="view-calendar" data-view="calendar" hidden></section>
+    <section class="view" id="view-decisions" data-view="decisions" hidden></section>
+    <section class="view" id="view-emergency" data-view="emergency" hidden></section>
+    <section class="view" id="view-justices" data-view="justices" hidden></section>
+    <section class="view" id="view-stats" data-view="stats" hidden></section>
+    <section class="view" id="view-reading" data-view="reading" hidden></section>
+  </div>
+</main>
+
+<footer>
+  <div class="wrap">
+    <p id="footSources"></p>
+    <p>Case summaries are written for this tracker in plain language and are not legal advice. Check the official docket before relying on a date.</p>
+    <p id="iosHint" hidden>On iPhone or iPad: tap Share, then “Add to Home Screen” to install.</p>
+  </div>
+</footer>
+
+<dialog id="caseDialog" aria-labelledby="dlgTitle"><div class="dlg" id="dlgBody"></div></dialog>
+
+<script>
+"use strict";
+/* ---------- Configuration ---------- */
+const REPO = "isaacrjones36/scotus-tracker";
+const LIVE_URLS = [
+  `https://raw.githubusercontent.com/${REPO}/main/site/data/live.json`,
+  "data/live.json",
+];
+
+/* ---------- Saved data (researched Oct 21, 2026) ---------- */
+const SNAPSHOT_DATE = "2026-10-21";
+const SNAP = {
+  term: 2026,
+  cases: [
+    { d: "25-170", n: "Suncor Energy (U.S.A.) Inc. v. Commissioners of Boulder County", lc: "Colo. Supreme Court", g: "2026-02-23", a: "2026-10-05", t: "Environment", big: 1,
+      q: "Whether federal law blocks state-law lawsuits seeking damages for harms tied to global greenhouse-gas emissions, and whether the Court has authority to hear the case at this stage." },
+    { d: "25-735", n: "Johnson v. United States Congress", lc: "11th Cir.", g: "2026-04-06", a: "2026-10-05", t: "Veterans",
+      q: "Whether federal district courts can hear constitutional challenges to federal laws that affect veterans’ benefits." },
+    { d: "25-498", n: "Anderson v. Intel Corp. Investment Policy Committee", lc: "9th Cir.", g: "2026-01-16", a: "2026-10-06", t: "Business",
+      q: "What a retirement-plan participant must allege to claim that plan fiduciaries broke ERISA’s duty of prudence because a fund underperformed, including whether a “meaningful benchmark” comparison is required." },
+    { d: "25-579", n: "Department of the Air Force v. Prutehi Guahan", lc: "9th Cir.", g: "2026-03-09", a: "2026-10-07", t: "Environment",
+      q: "Whether a Guam environmental group can challenge the Air Force’s permit renewal for disposing of unexploded ordnance before Guam’s EPA acts, and whether a full environmental impact statement was required." },
+    { d: "25-5343", n: "Beaird v. United States", lc: "5th Cir.", g: "2026-04-20", a: "2026-10-13", t: "Criminal",
+      q: "Whether courts still owe deference to the Sentencing Commission’s official commentary on the federal Sentencing Guidelines under the Court’s 1993 decision in Stinson." },
+    { d: "25-886", n: "Genalo v. Black", lc: "2d Cir.", g: "2026-06-15", a: "2026-10-13", t: "Immigration", dismissed: "2026-09-11",
+      q: "Whether prolonged immigration detention entitles a detainee to a bond hearing, and what standard applies. Dismissed under Rule 46 before argument; the detainee had been released in 2022." },
+    { d: "25-459", n: "Salazar v. Paramount Global", lc: "6th Cir.", g: "2026-01-26", a: "2026-10-14", t: "Privacy",
+      q: "Whether the Video Privacy Protection Act’s definition of “consumer” covers people who use any of a video provider’s goods or services, or only its audiovisual ones." },
+    { d: "25-5930", n: "Maxwell v. Dinis", lc: "5th Cir.", g: "2026-06-01", a: "2026-11-02", t: "Criminal",
+      q: "Whether a federal prisoner can use a habeas petition to seek earlier transfer to a halfway house or home confinement based on First Step Act time credits." },
+    { d: "25-352", n: "Younge v. Fulton Judicial Circuit District Attorney’s Office", lc: "11th Cir.", g: "2026-03-30", a: "2026-11-02", t: "Civil procedure",
+      q: "Whether a defendant may raise an affirmative defense at summary judgment after leaving it out of its answer. The underlying claim is a Title VII pregnancy-discrimination suit." },
+    { d: "25-581", n: "St. Mary Catholic Parish v. Roy", lc: "10th Cir.", g: "2026-04-20", a: "2026-11-03", t: "Religion", big: 1,
+      q: "Whether Colorado violated the Free Exercise Clause by excluding a Catholic preschool from its universal preschool program, and how Employment Division v. Smith and Carson v. Makin apply." },
+    { d: "25-1003", n: "Guerrero v. Johnson", lc: "5th Cir.", g: "2026-06-15", a: "2026-11-04", t: "Death penalty",
+      q: "Whether a Texas death-row prisoner’s claim of intellectual disability fits the narrow exception that allows a second federal habeas petition." },
+    { d: "25-417", n: "Nielsen v. Watanabe", lc: "9th Cir.", g: "2026-06-22", a: "2026-11-09", t: "Civil rights",
+      q: "Whether a federal prisoner can sue prison officials for damages over his medical care under Bivens." },
+    { d: "25-159", n: "Hoffmann v. WBI Energy Transmission, Inc.", lc: "8th Cir.", g: "2026-06-29", a: "2026-11-09", t: "Property",
+      q: "How courts should determine “just compensation” when a private natural-gas pipeline company takes rights-of-way through federal eminent domain." },
+    { d: "25-966", n: "Department of Labor v. Sun Valley Orchards, LLC", lc: "3d Cir.", g: "2026-04-27", a: "2026-11-10", t: "Agency power",
+      q: "Whether the Labor Department can use its own in-house hearings to collect money from employers who violate the H-2A seasonal farmworker visa program." },
+    { d: "25-183", n: "Crowther v. Board of Regents of the University System of Georgia", lc: "11th Cir.", g: "2026-05-18", a: "2026-11-30", t: "Employment",
+      q: "Whether Title IX gives employees of federally funded schools a right to sue for sex discrimination in employment. The circuits are split." },
+    { d: "25-842", n: "Wassily v. Blanche", lc: "2d Cir.", g: "2026-06-29", a: "2026-11-30", t: "Immigration",
+      q: "Whether a noncitizen who has lost asylum status can still obtain a green card." },
+    { d: "25-246", n: "Jouppi v. Alaska", lc: "Alaska Supreme Court", g: "2026-07-20", a: "2026-12-01", t: "Property",
+      q: "Whether a property forfeiture imposed by Alaska violates the Eighth Amendment’s ban on excessive fines." },
+    { d: "25-238", n: "Viramontes v. Cook County", lc: "7th Cir.", g: "2026-06-30", a: "2026-12-02", t: "Second Amendment", big: 1,
+      q: "Whether Cook County, Illinois, can ban possession of AR-15-style semiautomatic rifles under the Second Amendment. Argued together with Grant v. Higgins." },
+    { d: "25-566", n: "Grant v. Higgins", lc: "2d Cir.", g: "2026-06-30", a: "2026-12-02", t: "Second Amendment", big: 1,
+      q: "Whether Connecticut’s ban on semiautomatic rifles violates the Second Amendment. Consolidated with Viramontes v. Cook County for one hour of argument." },
+    { d: "25-840", n: "International Partners for Ethical Care, Inc. v. Ferguson", lc: "9th Cir.", g: "2026-06-29", a: "2026-12-07", t: "Parental rights", big: 1,
+      q: "A parental-rights challenge to a Washington state law on when parents must be told about their minor children’s care, including care related to gender identity." },
+    { d: "25-1017", n: "Republican National Committee v. Mi Familia Vota", lc: "9th Cir.", g: "2026-06-29", a: "2026-12-08", t: "Elections", big: 1,
+      q: "Whether Arizona may require documentary proof of citizenship from people registering to vote." },
+    { d: "26-426", n: "Department of Homeland Security v. D.V.D.", lc: "1st Cir.", g: "2026-09-29", a: "2026-12-09", t: "Immigration", big: 1,
+      q: "Whether the administration’s “third-country removals,” which send people to countries not named in their removal orders, are lawful. The Court paused a Massachusetts judge’s order on Sept. 29." },
+    { d: "25-965", n: "Grand v. City of University Heights", lc: "6th Cir.", g: "2026-06-30", a: "2026-12-09", t: "Religion",
+      q: "Whether an Orthodox Jewish man had to get a city permit and a final zoning decision before suing over limits on prayer gatherings at his home." },
+    { d: "25-6623", n: "Kian v. Florida", lc: "Fla. 4th DCA", g: "2026-06-15", t: "Criminal", big: 1,
+      q: "Whether the Sixth and Fourteenth Amendments guarantee a 12-person jury for a serious felony, which would call Florida’s six-person juries into question." },
+    { d: "25-1223", n: "Montoya Palacios v. Liggins", lc: "4th Cir.", g: "2026-06-29", t: "Immigration",
+      q: "Whether a habeas petition challenging immigration detention is a “civil action,” so a winning detainee can recover attorney’s fees under the Equal Access to Justice Act." },
+    { d: "24-1016", n: "RiseandShine Corp. v. PepsiCo, Inc.", lc: "2d Cir.", g: "2026-06-29", t: "Trademark",
+      q: "A trademark dispute between beverage makers over the name “RISE” and how courts decide whether consumers are likely to be confused." },
+    { d: "25-1311", n: "Apple Inc. v. Epic Games, Inc.", lc: "9th Cir.", g: "2026-06-30", t: "Business",
+      q: "Apple’s challenge to a civil-contempt finding that it violated the App Store injunction Epic won. The Court limited review to the contempt holding." },
+    { d: "26-104", n: "Rhoney v. Barbosa da Cunha", lc: "2d Cir.", g: "2026-10-01", t: "Immigration", big: 1,
+      q: "Whether the government can detain people arrested inside the U.S. without bond hearings under 8 U.S.C. § 1225(b)(2)(A), rather than under § 1226, which allows them." },
+    { d: "25-1349", n: "Marschner v. Marschner", lc: "N.D. Supreme Court", g: "2026-10-01", t: "Family law",
+      q: "Whether federal law bars state courts from enforcing a divorce agreement in which a veteran promised to make up his ex-spouse’s lost retirement pay if he later took disability benefits." },
+    { d: "25-1131", n: "Missionaries of St. John the Baptist, Inc. v. Frederic", lc: "Ky. Supreme Court", g: "2026-10-01", t: "Religion",
+      q: "Whether blocking a church’s planned grotto honoring the Virgin Mary on a lot next to the church substantially burdens its religious exercise under RLUIPA." },
+    { d: "25-1343", n: "Blanche v. Ozurumba", lc: "4th Cir.", g: "2026-10-13", t: "Immigration",
+      q: "Whether cooking for an armed Nigerian separatist group counts as “material support” for terrorism that bars a man from asylum." },
+    { d: "25-7026", n: "Berry v. United States", lc: "11th Cir.", g: "2026-10-13", t: "Criminal",
+      q: "Whether a prisoner may appeal an issue his own circuit’s precedent rejects when another circuit has ruled the other way." },
+    { d: "25-1103", n: "U.S. DOGE Service v. U.S. District Court for D.C.", lc: "D.C. Cir.", g: "2026-10-13", t: "Government",
+      q: "The administration’s petition challenging a federal trial court’s handling of a public-records lawsuit against the Department of Government Efficiency." },
+    { d: "26-204", n: "Department of Justice v. McNutt", lc: "5th Cir.", g: "2026-10-19", t: "Federal power",
+      q: "Whether the 158-year-old federal ban on distilling spirits at home is constitutional." },
+    { d: "26-12", n: "Association for Education Fairness v. Montgomery County Board of Education", lc: "4th Cir.", g: "2026-10-19", t: "Education", big: 1,
+      q: "A parent group’s challenge to how Montgomery County, Maryland, picks students for selective magnet programs, alleging the process discriminates by race." },
+  ],
+  thisTermRulings: [
+    { d: "26A416", n: "Trump v. Kingdom", date: "2026-10-21", vote: "Denied", author: "Unsigned order", kind: "Emergency order",
+      s: "Refused to pause a district court order that blocks the Bureau of Prisons from enforcing its 2026 policy limiting health care, including hormone therapy, for transgender inmates. Justices Thomas and Alito would have granted the request.",
+      dissent: ["T", "A"] },
+    { d: "26A476", n: "FCC v. Brown", date: "2026-10-14", vote: "7–2", author: "Per curiam", kind: "Emergency order",
+      s: "Paused a Fourth Circuit order that gave the FCC 48 hours to rule on a challenge to its political-ad pricing notice. Justices Sotomayor and Jackson would have denied the FCC’s request.",
+      dissent: ["S", "J"] },
+  ],
+  pendingEmergency: [
+    { n: "Mullin v. Friends of the Ruidosa Church", d: "26A560", filed: "2026-10-21", s: "The administration asks the Court to pause a federal judge’s order halting border wall construction in the Big Bend region until the government complies with environmental and other laws, and to summarily reverse it.",
+      link: "https://www.scotusblog.com/2026/10/trump-administration-asks-justices-to-allow-border-wall-construction-to-continue/" },
+    { n: "City of Baltimore v. Texas", d: "26A500", filed: "2026-10-15", s: "Three cities and an immigrant legal services group ask the Court to pause a Texas–Justice Department consent judgment that wiped out a 2024 rule letting immigration judges administratively close some deportation cases.",
+      link: "https://www.scotusblog.com/2026/10/challengers-ask-court-to-pause-agreement-between-texas-and-the-doj-on-deportation-proceedings/" },
+  ],
+  lastTerm: [
+    { n: "Trump v. Barbara", date: "2026-06-30", author: "Roberts", maj: "R S K Kv B J", t: "Citizenship",
+      s: "Children born on U.S. soil to parents here unlawfully or temporarily are citizens at birth under the Fourteenth Amendment. The executive order ending birthright citizenship cannot stand." },
+    { n: "Learning Resources, Inc. v. Trump", date: "2026-02-20", author: "Roberts", maj: "R S K G B J", t: "Tariffs",
+      s: "The International Emergency Economic Powers Act does not give the president power to impose tariffs." },
+    { n: "Trump v. Slaughter", date: "2026-06-29", author: "Roberts", maj: "R T A G Kv B", t: "Executive power",
+      s: "The president may fire FTC commissioners at will. The Court overruled what remained of Humphrey’s Executor." },
+    { n: "Trump v. Cook", date: "2026-06-29", author: "Roberts", maj: "R S K Kv J", t: "Federal Reserve",
+      s: "Left in place a lower-court order blocking the president from removing Fed Governor Lisa Cook while her case continues." },
+    { n: "Louisiana v. Callais", date: "2026-04-29", author: "Alito", maj: "R T A G Kv B", t: "Voting Rights Act",
+      s: "Louisiana’s second majority-Black congressional district was an unconstitutional racial gerrymander because the Voting Rights Act did not require it." },
+    { n: "West Virginia v. B.P.J. (with Little v. Hecox)", date: "2026-06-30", author: "Kavanaugh", maj: "R T A G Kv B", t: "Title IX",
+      s: "Upheld state laws limiting girls’ and women’s sports teams to students who are biologically female, under both Title IX and the Equal Protection Clause." },
+    { n: "Watson v. Republican National Committee", date: "2026-06-29", author: "Barrett", maj: "R S K B J", t: "Elections",
+      s: "Federal Election Day statutes do not stop Mississippi from counting mail ballots postmarked by Election Day that arrive up to five business days later." },
+    { n: "NRSC v. FEC", date: "2026-06-30", author: "Kavanaugh", maj: "R T A G Kv B", t: "Campaign finance",
+      s: "Federal limits on political parties’ coordinated spending with their candidates violate the First Amendment." },
+    { n: "Chatrie v. United States", date: "2026-06-29", author: "Kagan", maj: "R S K G Kv J", t: "Fourth Amendment",
+      s: "Getting a phone user’s location history from Google through a geofence warrant is a Fourth Amendment search. The good-faith question goes back to the lower court." },
+    { n: "Wolford v. Lopez", date: "2026-06-25", author: "Alito", maj: "R T A G Kv B", t: "Second Amendment",
+      s: "Struck down Hawaii’s rule that concealed-carry permit holders need a property owner’s express permission to carry on private property open to the public." },
+    { n: "Chiles v. Salazar", date: "2026-03-31", author: "Gorsuch", maj: "R T A S K G Kv B", t: "Free speech",
+      s: "Colorado’s ban on conversion therapy for minors restricts speech based on viewpoint, so it must face strict scrutiny." },
+    { n: "United States v. Hemani", date: "2026-06-18", author: "Gorsuch", maj: "R T A S K G Kv B J", t: "Second Amendment",
+      s: "Prosecuting a regular marijuana user for having a gun, based on that use alone, violates the Second Amendment as applied to him." },
+  ],
+  articles: [
+    { title: "Justices grant two significant cases", source: "SCOTUSblog", author: "Kelsey Dallas and Blake Fox", date: "2026-10-20", link: "https://www.scotusblog.com/2026/10/justices-grant-two-significant-cases/" },
+    { title: "Supreme Court takes up case that could change how schools select students for magnet programs", source: "Chalkbeat", date: "2026-10-19", link: "https://www.chalkbeat.org/2026/10/19/supreme-court-takes-up-magnet-school-admissions-case/" },
+    { title: "Twenty-Five Cases in the Docket for SCOTUS’ 2026-2027 Term", source: "National Law Review", author: "Epstein Becker Green", date: "2026-10-19", link: "https://natlawreview.com/article/fall-2026-scotus-preview-cases-watch" },
+    { title: "US Supreme Court to review federal ban on home distilling", source: "JURIST", date: "2026-10", link: "https://www.jurist.org/news/2026/10/us-supreme-court-to-review-federal-ban-on-home-distilling/" },
+    { title: "The immigration term", source: "SCOTUSblog", author: "Kelsey Dallas", date: "2026-10-15", link: "https://www.scotusblog.com/2026/10/the-immigration-term/" },
+    { title: "Orders and arguments ahead", source: "SCOTUSblog", author: "Kelsey Dallas and Blake Fox", date: "2026-10-13", link: "https://www.scotusblog.com/2026/10/orders-and-arguments-ahead/" },
+    { title: "A snapshot of the Supreme Court’s 2025-26 interim relief docket – and some surprises on it", source: "SCOTUSblog", author: "Taraleigh Davis", date: "2026-10-13", link: "https://www.scotusblog.com/2026/10/a-snapshot-of-the-supreme-courts-2025-26-interim-relief-docket-and-some-surprises-on-it/" },
+    { title: "The first relists of the 2026-27 term", source: "SCOTUSblog", date: "2026-10", link: "https://www.scotusblog.com/2026/10/the-first-relists-of-the-2026-27-term/" },
+    { title: "Wild card justices and the “Kagan court” for criminal cases", source: "SCOTUSblog", date: "2026-10", link: "https://www.scotusblog.com/2026/10/wild-card-justices-and-the-kagan-court-for-criminal-cases/" },
+    { title: "Local zoning dispute over grotto presents new First Amendment test", source: "National Constitution Center", author: "Scott Bomboy", date: "2026-10-07", link: "https://constitutioncenter.org/blog/local-zoning-dispute-over-grotto-presents-new-first-amendment-test" },
+    { title: "Court grants three cases as new term is set to begin", source: "SCOTUSblog", author: "Kelsey Dallas and Nora Collins", date: "2026-10-02", link: "https://www.scotusblog.com/2026/10/court-grants-three-cases-as-new-term-is-set-to-begin/" },
+    { title: "Criminal cases coming in the new term", source: "SCOTUSblog", date: "2026-09", link: "https://www.scotusblog.com/2026/09/criminal-cases-coming-in-the-new-term-and-why-the-court-could-and-should-do-more/" },
+    { title: "Court announces cases it will hear in November, including religious discrimination dispute", source: "SCOTUSblog", author: "Amy Howe", date: "2026-08-11", link: "https://www.scotusblog.com/2026/08/court-announces-cases-it-will-hear-in-november-including-religious-discrimination-dispute/" },
+    { title: "Justice Alito says he is staying on Supreme Court for another term", source: "GV Wire", date: "2026-08-07", link: "https://gvwire.com/2026/08/07/justice-alito-says-he-is-staying-on-supreme-court-for-another-term/" },
+    { title: "Court announces cases it will hear in October, including disputes on climate change and immigration detention", source: "SCOTUSblog", author: "Amy Howe", date: "2026-08-04", link: "https://www.scotusblog.com/2026/08/court-announces-cases-it-will-hear-in-october-which-include-significant-disputes-on-climate-chan/" },
+    { title: "4 takeaways from the Supreme Court’s 2025–2026 term", source: "Reason", author: "Damon Root", date: "2026-07-14", link: "https://reason.com/2026/07/14/4-takeaways-from-the-supreme-courts-2025-2026-term/" },
+    { title: "Final Stat Pack for the 2025-26 term (PDF)", source: "SCOTUSblog", date: "2026-07-06", link: "https://media.scotusblog.com/embeds/563200520fdde75291c69f3eaeeee8f55aaaf27c/final-stat-pack-2025-26-term.pdf" },
+    { title: "The 2025-26 term by the numbers", source: "SCOTUSblog", author: "Jake S. Truscott and Adam Feldman", date: "2026-07-01", link: "https://www.scotusblog.com/2026/07/the-2025-26-term-by-the-numbers/" },
+    { title: "Supreme Court allows Trump to fire FTC member but not Fed director", source: "National Constitution Center", author: "Scott Bomboy", date: "2026-06-29", link: "https://constitutioncenter.org/blog/supreme-court-allows-trump-to-fire-ftc-member-but-not-fed-director" },
+    { title: "Court rules that law enforcement’s use of geofence warrant was a search", source: "SCOTUSblog", date: "2026-06", link: "https://www.scotusblog.com/2026/06/court-rules-that-law-enforcements-use-of-geofence-warrant-was-a-search/" },
+  ],
+};
+
+/* The bench, in order of seniority */
+const JUSTICES = [
+  { k: "R", name: "John G. Roberts, Jr.", role: "Chief Justice", by: "G.W. Bush", born: "1955-01-27", since: "2005-09-29",
+    note: "In the majority <strong>95%</strong> of the time last term, tied for most. Wrote 6 opinions, all for the Court." },
+  { k: "T", name: "Clarence Thomas", role: "Associate Justice", by: "G.H.W. Bush", born: "1948-06-23", since: "1991-10-23",
+    note: "Wrote <strong>28</strong> opinions last term, the most, including 15 concurrences. His Barbara dissent ran about 29,400 words." },
+  { k: "A", name: "Samuel A. Alito, Jr.", role: "Associate Justice", by: "G.W. Bush", born: "1950-04-01", since: "2006-01-31",
+    note: "Agreed with Thomas in <strong>94%</strong> of cases last term. Said in August he is staying for another term." },
+  { k: "S", name: "Sonia Sotomayor", role: "Associate Justice", by: "Obama", born: "1954-06-25", since: "2009-08-08",
+    note: "Agreed with Jackson in <strong>100%</strong> of closely divided cases last term, the only pair to do so." },
+  { k: "K", name: "Elena Kagan", role: "Associate Justice", by: "Obama", born: "1960-04-28", since: "2010-08-07",
+    note: "Wrote the majority in <strong>Chatrie</strong> (geofence warrants) and the main dissents in Callais and NRSC." },
+  { k: "G", name: "Neil M. Gorsuch", role: "Associate Justice", by: "Trump", born: "1967-08-29", since: "2017-04-10",
+    note: "Averaged <strong>130.6 days</strong> from argument to majority opinion last term, second-longest." },
+  { k: "Kv", name: "Brett M. Kavanaugh", role: "Associate Justice", by: "Trump", born: "1965-02-12", since: "2018-10-06",
+    note: "In the majority <strong>95%</strong> of the time last term, tied with the Chief Justice." },
+  { k: "B", name: "Amy Coney Barrett", role: "Associate Justice", by: "Trump", born: "1972-01-28", since: "2020-10-27",
+    note: "In the majority <strong>92%</strong> of the time. The only justice with <strong>no</strong> noted emergency-docket dissents." },
+  { k: "J", name: "Ketanji Brown Jackson", role: "Associate Justice", by: "Biden", born: "1970-09-14", since: "2022-06-30",
+    note: "Most dissents last term (<strong>10</strong>) and most noted emergency-docket dissents (<strong>15</strong>)." },
+];
+const SLIP_JUDGE = { R: "Roberts", T: "Thomas", A: "Alito", S: "Sotomayor", K: "Kagan", G: "Gorsuch", KB: "Kavanaugh", BK: "Kavanaugh", B: "Barrett", AB: "Barrett", ACB: "Barrett", J: "Jackson", KBJ: "Jackson", PC: "Per curiam" };
+
+/* ---------- Helpers ---------- */
+const $ = (s, el = document) => el.querySelector(s);
+const esc = (s) => String(s ?? "").replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
+const pad = (n) => String(n).padStart(2, "0");
+const isoLocal = (d) => `${d.getFullYear()}-${pad(d.getMonth() + 1)}-${pad(d.getDate())}`;
+const TODAY = isoLocal(new Date());
+const parseDay = (iso) => { const [y, m, d] = iso.split("-").map(Number); return new Date(y, (m || 1) - 1, d || 1); };
+const MONTHS = ["Jan.", "Feb.", "March", "April", "May", "June", "July", "Aug.", "Sept.", "Oct.", "Nov.", "Dec."];
+const WEEKDAYS = ["Sun.", "Mon.", "Tue.", "Wed.", "Thu.", "Fri.", "Sat."];
+function fmt(iso, opts = {}) {
+  if (!iso) return "";
+  const parts = iso.split("-");
+  if (parts.length === 2) return `${MONTHS[+parts[1] - 1]} ${parts[0]}`;
+  const d = parseDay(iso);
+  const s = `${MONTHS[d.getMonth()]} ${d.getDate()}`;
+  return (opts.wd ? WEEKDAYS[d.getDay()] + " " : "") + s + (opts.y ? `, ${d.getFullYear()}` : "");
+}
+const daysBetween = (a, b) => Math.round((parseDay(b) - parseDay(a)) / 864e5);
+function store(key, val) { try { if (val === undefined) return JSON.parse(localStorage.getItem(key) || "null"); localStorage.setItem(key, JSON.stringify(val)); } catch { return null; } }
+const docketUrl = (d) => /^\d{2}-\d+$/.test(d) ? `https://www.supremecourt.gov/docket/docketfiles/html/public/${d}.html` : `https://www.supremecourt.gov/search.aspx?filename=/docket/docketfiles/html/public/${d.toLowerCase()}.html`;
+const blogSearch = (n) => `https://www.scotusblog.com/?s=${encodeURIComponent(n.split(" v. ")[0])}`;
+
+/* ---------- State ---------- */
+const state = {
+  term: SNAP.term,
+  cases: SNAP.cases.map((c) => ({ docket: c.d, name: c.n, lower: c.lc, granted: c.g, argued: c.a || null, topic: c.t, q: c.q, big: !!c.big, dismissed: c.dismissed || null })),
+  extraOpinions: [],
+  articles: SNAP.articles.map((a) => ({ ...a })),
+  liveAt: null,
+  liveTermChanged: false,
+  watch: new Set(store("watch") || []),
+  filters: { status: "all", topic: "", sitting: "", q: "", watch: false },
+};
+function statusOf(c) {
+  if (c.dismissed) return "dismissed";
+  if (c.decided) return "decided";
+  if (c.argued && c.argued <= TODAY) return "argued";
+  if (c.argued) return "scheduled";
+  return "granted";
+}
+const STATUS_LABEL = { granted: "Awaiting argument date", scheduled: "Argument scheduled", argued: "Argued, awaiting decision", decided: "Decided", dismissed: "Dismissed" };
+const STATUS_SHORT = { granted: "Granted", scheduled: "Scheduled", argued: "Argued", decided: "Decided", dismissed: "Dismissed" };
+const statusPill = (s) => `<span class="status s-${s}">${STATUS_SHORT[s]}</span>`;
+const sittingOf = (c) => c.argued ? MONTHS[parseDay(c.argued).getMonth()].replace(".", "") : "";
+
+/* ---------- Live data ---------- */
+async function loadLive() {
+  for (const url of LIVE_URLS) {
+    try {
+      const res = await fetch(url, { cache: "no-cache" });
+      if (!res.ok) continue;
+      const live = await res.json();
+      if (live && live.generatedAt) { applyLive(live); return true; }
+    } catch { /* try the next source */ }
+  }
+  return false;
+}
+function applyLive(live) {
+  state.liveAt = live.generatedAt;
+  if (live.term && live.term > state.term) {
+    // A new term has opened since this page was written; show the live docket only.
+    state.term = live.term; state.cases = []; state.liveTermChanged = true;
+  }
+  const by = new Map(state.cases.map((c) => [c.docket, c]));
+  for (const l of live.cases || []) {
+    let c = by.get(l.docket);
+    if (!c) {
+      // Oyez also lists placeholder entries with no dates; only add cases with a real grant, argument or decision.
+      if (!l.granted && !l.argued && !l.decided) continue;
+      if (l.decided && l.decided < `${state.term}-10-01`) continue;
+      c = { docket: l.docket, name: l.name, lower: "", topic: "Newly added", q: l.question || "Details to come.", isNew: true };
+      state.cases.push(c); by.set(l.docket, c);
+    }
+    if (l.granted && !c.granted) c.granted = l.granted;
+    if (l.argued) c.argued = l.argued;
+    if (l.decided) c.decided = l.decided;
+    if (l.vote) c.vote = l.vote;
+    if (l.authorName) c.author = l.authorName;
+    if (l.conclusion) c.holding = l.conclusion;
+    if (l.oyez) c.oyez = l.oyez;
+  }
+  const known = new Set(SNAP.thisTermRulings.map((r) => r.d));
+  for (const o of live.opinions || []) {
+    const c = by.get(o.docket);
+    if (c) {
+      c.decided = c.decided || o.date; c.opinion = o.pdf;
+      if (!c.author && o.author) c.author = SLIP_JUDGE[o.author] || o.author;
+    } else if (!known.has(o.docket) && !state.extraOpinions.some((x) => x.docket === o.docket)) {
+      state.extraOpinions.push({ ...o, author: SLIP_JUDGE[o.author] || o.author });
+    }
+  }
+  const links = new Set(state.articles.map((a) => a.link));
+  for (const a of live.articles || []) {
+    if (!links.has(a.link)) { state.articles.push({ ...a, fresh: true }); links.add(a.link); }
+  }
+  state.articles.sort((a, b) => (b.date || "").localeCompare(a.date || ""));
+}
+
+/* ---------- Tabs ---------- */
+const TABS = [
+  ["overview", "Overview"], ["docket", "Docket"], ["calendar", "Calendar"], ["decisions", "Decisions"],
+  ["emergency", "Emergency docket"], ["justices", "Justices"], ["stats", "Stats"], ["reading", "Reading"],
+];
+let current = "overview";
+function renderTabs() {
+  const counts = { docket: state.cases.length, reading: state.articles.length };
+  $("#tabs").innerHTML = TABS.map(([id, label]) =>
+    `<button class="tab" role="tab" id="tab-${id}" aria-controls="view-${id}" aria-selected="${id === current}" data-tab="${id}">${label}${counts[id] ? `<span class="count">${counts[id]}</span>` : ""}</button>`).join("");
+}
+function show(id, push = true) {
+  if (!TABS.some(([t]) => t === id)) id = "overview";
+  current = id;
+  document.querySelectorAll("[data-view]").forEach((v) => (v.hidden = v.dataset.view !== id));
+  document.querySelectorAll(".tab").forEach((t) => t.setAttribute("aria-selected", t.dataset.tab === id));
+  const tab = $(`#tab-${id}`); if (tab) tab.scrollIntoView({ block: "nearest", inline: "nearest" });
+  if (push) { try { history.replaceState(null, "", "#" + id); } catch {} }
+  window.scrollTo({ top: 0 });
+}
+document.addEventListener("click", (e) => {
+  const t = e.target.closest("[data-tab]"); if (t) { show(t.dataset.tab); return; }
+  const go = e.target.closest("[data-go]");
+  if (go) {
+    if (go.dataset.status) { state.filters = { ...state.filters, status: go.dataset.status, topic: "", sitting: "", q: "", watch: false }; renderDocket(); }
+    show(go.dataset.go);
+    if (go.dataset.day) setTimeout(() => flashDay(go.dataset.day), 50);
+    return;
+  }
+  const open = e.target.closest("[data-case]"); if (open) { openCase(open.dataset.case); return; }
+  const star = e.target.closest("[data-star]"); if (star) { toggleWatch(star.dataset.star); return; }
+});
+
+/* ---------- Overview ---------- */
+function renderOverview() {
+  const cs = state.cases;
+  const upcoming = cs.filter((c) => statusOf(c) === "scheduled").sort((a, b) => a.argued.localeCompare(b.argued));
+  const nextDay = upcoming[0]?.argued;
+  const nextCases = upcoming.filter((c) => c.argued === nextDay);
+  const sittingEnd = nextDay ? upcoming.filter((c) => daysBetween(nextDay, c.argued) <= 9) : [];
+  const counts = countByStatus();
+  const total = cs.length || 1;
+  const order = ["decided", "argued", "scheduled", "granted", "dismissed"];
+  const watched = cs.filter((c) => state.watch.has(c.docket));
+  const latestRuling = latestDecisions()[0];
+
+  let nextHtml;
+  if (nextDay) {
+    const dd = daysBetween(TODAY, nextDay);
+    nextHtml = `<div class="next-top"><span class="days">${dd === 0 ? "Today" : dd}</span>
+      <div><strong>${dd === 0 ? "Arguments today" : dd === 1 ? "day until the next argument" : "days until the next argument"}</strong>
+      <span class="muted">${fmt(nextDay, { wd: true, y: true })} · 10 a.m. ET</span></div></div>
+      <ul>${sittingEnd.map((c) => `<li><span class="mono small muted">${fmt(c.argued, { wd: true })}</span><button class="linkish" data-case="${esc(c.docket)}">${esc(c.name)}</button></li>`).join("")}</ul>
+      <div><button class="linkish small" data-go="calendar" data-day="${nextDay}">See the full argument calendar</button></div>`;
+  } else {
+    nextHtml = `<div class="next-top"><div><strong>No arguments on the calendar right now</strong>
+      <span class="muted">The Court usually announces each sitting several weeks ahead.</span></div></div>`;
+  }
+
+  $("#view-overview").innerHTML = `
+    <div class="view-head">
+      <span class="eyebrow">October Term ${state.term} · ${fmt(TODAY, { wd: true, y: true })}</span>
+      <h2>${headline(counts)}</h2>
+      <p>${state.cases.length} cases on the merits docket. ${counts.argued} argued and awaiting decision, ${counts.scheduled} scheduled, ${counts.granted} waiting for an argument date.</p>
+    </div>
+    <div class="hero">
+      <div class="next">${nextHtml}</div>
+      <div class="pipeline panel">
+        <div class="section-title" style="border:0;padding:0">Where the cases stand <small>tap to filter</small></div>
+        <div class="pipe-bar" role="img" aria-label="Cases by status">${order.map((s) => counts[s] ? `<span style="width:${(counts[s] / total) * 100}%;background:var(--${s})" title="${STATUS_SHORT[s]}: ${counts[s]}"></span>` : "").join("")}</div>
+        <div class="pipe-legend">${order.map((s) => `<button data-go="docket" data-status="${s}"><span class="sw" style="background:var(--${s})"></span><span>${STATUS_LABEL[s]}</span><b>${counts[s]}</b></button>`).join("")}</div>
+      </div>
+    </div>
+    <div class="cols">
+      <div class="stack">
+        <div class="section-title">Cases to watch <small>${watched.length ? "your watchlist" : "biggest of the term"}</small></div>
+        <ul class="list-plain">${(watched.length ? watched : cs.filter((c) => c.big)).slice(0, 7).map((c) => {
+          const s = statusOf(c);
+          return `<li><div style="display:flex;gap:8px;justify-content:space-between;align-items:baseline;flex-wrap:wrap"><button class="linkish" data-case="${esc(c.docket)}">${esc(c.name)}</button>${statusPill(s)}</div>
+          <span class="meta">${esc(c.topic)} · ${s === "scheduled" || s === "argued" ? (s === "argued" ? "Argued " : "Argues ") + fmt(c.argued) : s === "decided" ? "Decided " + fmt(c.decided) : "Granted " + fmt(c.granted)}</span></li>`;
+        }).join("")}</ul>
+        <div><button class="linkish small" data-go="docket">Browse the full docket</button></div>
+      </div>
+      <div class="stack">
+        <div class="section-title">Latest from the Court <small><button class="linkish" data-go="reading">All reading</button></small></div>
+        <ul class="list-plain">
+          ${latestRuling ? `<li><span class="meta">Latest ruling · ${fmt(latestRuling.date, { y: true })}</span><button class="linkish" data-go="decisions">${esc(latestRuling.n)}</button><span class="meta">${esc(latestRuling.vote || "")}${latestRuling.vote ? " · " : ""}${esc(latestRuling.author || "")}</span></li>` : ""}
+          ${SNAP.pendingEmergency.map((p) => `<li><span class="meta">Pending emergency request · filed ${fmt(p.filed)}</span><button class="linkish" data-go="emergency">${esc(p.n)}</button></li>`).join("")}
+          ${state.articles.slice(0, 4).map((a) => `<li><span class="meta">${esc(a.source)} · ${fmt(a.date)}</span><a href="${esc(a.link)}" target="_blank" rel="noopener">${esc(a.title)}</a></li>`).join("")}
+        </ul>
+      </div>
+    </div>`;
+}
+function headline(c) {
+  if (c.argued && !c.decided) return `${c.argued} argued cases are waiting on opinions.`;
+  if (c.decided) return `${c.decided} decided so far this term.`;
+  return "The term is underway.";
+}
+function countByStatus() {
+  const c = { granted: 0, scheduled: 0, argued: 0, decided: 0, dismissed: 0 };
+  state.cases.forEach((x) => c[statusOf(x)]++);
+  return c;
+}
+
+/* ---------- Docket ---------- */
+function renderDocket() {
+  const f = state.filters;
+  const topics = [...new Set(state.cases.map((c) => c.topic))].sort();
+  const sittings = [...new Set(state.cases.filter((c) => c.argued).sort((a, b) => a.argued.localeCompare(b.argued)).map(sittingOf))];
+  const statuses = [["all", "All"], ["granted", "Awaiting date"], ["scheduled", "Scheduled"], ["argued", "Argued"], ["decided", "Decided"]];
+  const view = $("#view-docket");
+  if (!view.dataset.built) {
+    view.innerHTML = `
+      <div class="view-head"><span class="eyebrow">Merits docket</span><h2>Every case the Court has agreed to hear</h2>
+      <p>Cases move from a grant of certiorari, to an argument date, to argument, to a decision. Tap a case for its question, timeline and links.</p></div>
+      <div class="filters">
+        <div class="filter-row"><div class="seg" id="statusSeg"></div></div>
+        <div class="filter-row">
+          <label class="field field-grow"><input id="q" type="search" aria-label="Search cases" placeholder="Search by name, docket number or issue" autocomplete="off"></label>
+          <label class="field"><span class="small muted">Topic</span><select id="topicSel"></select></label>
+          <label class="field"><span class="small muted">Sitting</span><select id="sittingSel"></select></label>
+          <div class="seg"><button id="watchBtn" type="button" aria-pressed="false">★ Watchlist</button></div>
+        </div>
+      </div>
+      <div class="result-count" id="resultCount" aria-live="polite"></div>
+      <div class="cases" id="caseGrid"></div>`;
+    view.dataset.built = "1";
+    $("#q").addEventListener("input", (e) => { state.filters.q = e.target.value; renderDocketList(); });
+    $("#topicSel").addEventListener("change", (e) => { state.filters.topic = e.target.value; renderDocketList(); });
+    $("#sittingSel").addEventListener("change", (e) => { state.filters.sitting = e.target.value; renderDocketList(); });
+    $("#watchBtn").addEventListener("click", () => { state.filters.watch = !state.filters.watch; renderDocketList(); });
+    $("#statusSeg").addEventListener("click", (e) => { const b = e.target.closest("button"); if (!b) return; state.filters.status = b.dataset.s; renderDocketList(); });
+  }
+  $("#statusSeg").innerHTML = statuses.map(([s, l]) => `<button type="button" data-s="${s}" aria-pressed="${f.status === s}">${l}</button>`).join("");
+  $("#topicSel").innerHTML = `<option value="">All topics</option>` + topics.map((t) => `<option ${t === f.topic ? "selected" : ""}>${esc(t)}</option>`).join("");
+  $("#sittingSel").innerHTML = `<option value="">Any</option>` + sittings.map((t) => `<option ${t === f.sitting ? "selected" : ""}>${esc(t)}</option>`).join("") + `<option value="none" ${f.sitting === "none" ? "selected" : ""}>Not yet set</option>`;
+  $("#q").value = f.q;
+  renderDocketList();
+}
+function renderDocketList() {
+  const f = state.filters;
+  $("#statusSeg").querySelectorAll("button").forEach((b) => b.setAttribute("aria-pressed", b.dataset.s === f.status));
+  $("#watchBtn").setAttribute("aria-pressed", f.watch);
+  const q = f.q.trim().toLowerCase();
+  const rank = { argued: 0, scheduled: 1, granted: 2, decided: 3, dismissed: 4 };
+  const list = state.cases.filter((c) => {
+    const s = statusOf(c);
+    if (f.status !== "all" && s !== f.status) return false;
+    if (f.topic && c.topic !== f.topic) return false;
+    if (f.sitting === "none" && c.argued) return false;
+    if (f.sitting && f.sitting !== "none" && sittingOf(c) !== f.sitting) return false;
+    if (f.watch && !state.watch.has(c.docket)) return false;
+    if (q && !`${c.name} ${c.docket} ${c.topic} ${c.q} ${c.lower}`.toLowerCase().includes(q)) return false;
+    return true;
+  }).sort((a, b) => (rank[statusOf(a)] - rank[statusOf(b)]) || (a.argued || "9").localeCompare(b.argued || "9") || (a.granted || "").localeCompare(b.granted || ""));
+  $("#resultCount").textContent = `${list.length} of ${state.cases.length} cases`;
+  $("#caseGrid").innerHTML = list.length ? list.map(caseCard).join("") :
+    `<div class="empty">${f.watch && !state.watch.size ? "Your watchlist is empty. Tap the star on any case to follow it." : "No cases match these filters."}</div>`;
+}
+const STAR = `<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3.5l2.6 5.4 5.9.8-4.3 4.1 1 5.8L12 16.9l-5.2 2.7 1-5.8L3.5 9.7l5.9-.8z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg>`;
+function caseCard(c) {
+  const s = statusOf(c);
+  const when = s === "decided" ? `Decided ${fmt(c.decided)}${c.vote ? " · " + esc(c.vote) : ""}` : s === "argued" ? `Argued ${fmt(c.argued)}` : s === "scheduled" ? `Argues ${fmt(c.argued, { wd: true })}` : s === "dismissed" ? `Dismissed ${fmt(c.dismissed)}` : `Granted ${fmt(c.granted)}`;
+  return `<article class="case">
+    <div class="case-top"><span class="mono">No. ${esc(c.docket)}</span>${statusPill(s)}</div>
+    <h3><button data-case="${esc(c.docket)}">${esc(c.name)}</button></h3>
+    <p>${esc(c.q)}</p>
+    <div class="case-foot"><div class="tags"><span class="chip">${esc(c.topic)}</span>${c.big ? `<span class="flag">Major</span>` : ""}${c.isNew ? `<span class="flag">New</span>` : ""}</div>
+      <span>${when}</span>
+      <button class="star" data-star="${esc(c.docket)}" aria-pressed="${state.watch.has(c.docket)}" aria-label="${state.watch.has(c.docket) ? "Remove from" : "Add to"} watchlist">${STAR}</button></div>
+  </article>`;
+}
+function toggleWatch(d) {
+  state.watch.has(d) ? state.watch.delete(d) : state.watch.add(d);
+  store("watch", [...state.watch]);
+  document.querySelectorAll(`[data-star="${CSS.escape(d)}"]`).forEach((b) => { b.setAttribute("aria-pressed", state.watch.has(d)); b.setAttribute("aria-label", (state.watch.has(d) ? "Remove from" : "Add to") + " watchlist"); });
+  if (state.filters.watch && current === "docket") renderDocketList();
+  if (current !== "overview") renderOverview();
+}
+
+/* ---------- Case dialog ---------- */
+function openCase(d) {
+  const c = state.cases.find((x) => x.docket === d); if (!c) return;
+  const s = statusOf(c);
+  const steps = [
+    { label: "Granted", date: c.granted, done: !!c.granted },
+    { label: s === "scheduled" ? "Argument set" : "Argued", date: c.argued, done: s === "argued" || s === "decided" },
+    { label: s === "dismissed" ? "Dismissed" : "Decided", date: c.decided || c.dismissed, done: s === "decided" || s === "dismissed" },
+  ];
+  const nextIdx = steps.findIndex((x) => !x.done);
+  const links = [
+    [docketUrl(c.docket), "Official docket"],
+    [blogSearch(c.name), "SCOTUSblog coverage"],
+    c.oyez && [c.oyez, "Oyez (audio and summary)"],
+    c.opinion && [c.opinion, "Read the opinion (PDF)"],
+  ].filter(Boolean);
+  $("#dlgBody").innerHTML = `
+    <div class="dlg-head"><div class="stack" style="gap:6px"><span class="mono small muted">No. ${esc(c.docket)} · ${esc(c.lower || "Lower court not listed")}</span>
+      <h2 id="dlgTitle">${esc(c.name)}</h2><div style="display:flex;gap:8px;flex-wrap:wrap">${statusPill(s)}<span class="chip">${esc(c.topic)}</span></div></div>
+      <button class="x" type="button" aria-label="Close" data-close>×</button></div>
+    <div class="stack" style="gap:4px"><span class="eyebrow" style="font-size:.6875rem">The question</span><p>${esc(c.q)}</p></div>
+    ${c.holding ? `<div class="stack" style="gap:4px"><span class="eyebrow" style="font-size:.6875rem">The ruling</span><p>${esc(c.holding)}</p></div>` : ""}
+    ${s === "decided" && (c.vote || c.author) ? `<p class="small muted">${esc(c.vote || "")}${c.vote && c.author ? " · " : ""}${c.author ? "Opinion by " + esc(c.author) : ""}</p>` : ""}
+    <ol class="timeline">${steps.map((x, i) => `<li class="${x.done ? "done" : i === nextIdx ? "next-step" : ""}"><b>${x.label}</b><span class="muted">${x.date ? fmt(x.date, { y: true }) : "Not yet"}</span></li>`).join("")}</ol>
+    ${s === "granted" || s === "scheduled" ? briefStrip() : ""}
+    <div class="dlg-links">${links.map(([u, l]) => `<a href="${esc(u)}" target="_blank" rel="noopener">${l} ↗</a>`).join("")}</div>
+    <button class="linkish small" data-star="${esc(c.docket)}" aria-pressed="${state.watch.has(c.docket)}">${state.watch.has(c.docket) ? "★ On your watchlist" : "☆ Add to watchlist"}</button>`;
+  const dlg = $("#caseDialog");
+  if (typeof dlg.showModal === "function") { if (!dlg.open) dlg.showModal(); } else dlg.setAttribute("open", "");
+}
+function briefStrip() {
+  // Supreme Court Rule 33.1(g) assigns each kind of merits brief its own cover color.
+  const covers = [["Petitioner", "#cfe0f3"], ["Respondent", "#e7b8b8"], ["Reply", "#f4e29a"], ["Amicus (pet.)", "#cfe8c8"], ["Amicus (resp.)", "#7fae84"], ["U.S. (SG)", "#c9cbcf"]];
+  return `<div class="brief-strip"><span class="small muted">Briefing in progress. Under Rule 33, each merits brief arrives in its own cover color:</span>
+    <div class="covers">${covers.map(([l, c]) => `<span style="background:${c}">${l}</span>`).join("")}</div></div>`;
+}
+$("#caseDialog").addEventListener("click", (e) => {
+  if (e.target.closest("[data-close]") || e.target === e.currentTarget) e.currentTarget.close();
+  const star = e.target.closest("[data-star]");
+  if (star) { setTimeout(() => openCase(star.dataset.star), 0); }
+});
+
+/* ---------- Calendar ---------- */
+function renderCalendar() {
+  const days = {};
+  state.cases.filter((c) => c.argued && !c.dismissed).forEach((c) => (days[c.argued] ||= []).push(c));
+  const keys = Object.keys(days).sort();
+  const months = [...new Set(keys.map((k) => k.slice(0, 7)))];
+  const unscheduled = state.cases.filter((c) => statusOf(c) === "granted");
+  $("#view-calendar").innerHTML = `
+    <div class="view-head"><span class="eyebrow">Argument calendar</span><h2>Sittings for October Term ${state.term}</h2>
+    <p>The Court hears arguments in two-week sittings, usually Monday through Wednesday at 10 a.m. Eastern. Highlighted days have arguments; tap one to jump to it.</p></div>
+    <div class="months">${months.map((m) => monthGrid(m, days)).join("")}</div>
+    <div class="stack"><div class="section-title">Day by day <small>${keys.length} argument days</small></div>
+      <div class="agenda">${keys.map((k) => `<div class="agenda-day" id="day-${k}">
+        <time datetime="${k}">${fmt(k, { wd: true })}<span>${k < TODAY ? "Argued" : k === TODAY ? "Today" : `in ${daysBetween(TODAY, k)} days`}</span></time>
+        <ul>${days[k].map((c) => `<li><button class="linkish" data-case="${esc(c.docket)}">${esc(c.name)}</button><span class="chip">${esc(c.topic)}</span></li>`).join("")}</ul></div>`).join("")}</div></div>
+    ${unscheduled.length ? `<div class="stack"><div class="section-title">Granted, not yet scheduled <small>${unscheduled.length} cases, likely argued in early 2027</small></div>
+      <ul class="list-plain">${unscheduled.map((c) => `<li><button class="linkish" data-case="${esc(c.docket)}">${esc(c.name)}</button><span class="meta">Granted ${fmt(c.granted, { y: true })} · ${esc(c.topic)}</span></li>`).join("")}</ul></div>` : ""}`;
+  $("#view-calendar").querySelectorAll("button.d.arg").forEach((b) => b.addEventListener("click", () => flashDay(b.dataset.k)));
+}
+function monthGrid(ym, days) {
+  const [y, m] = ym.split("-").map(Number);
+  const first = new Date(y, m - 1, 1), n = new Date(y, m, 0).getDate();
+  const lead = (first.getDay() + 6) % 7; // Monday first
+  let cells = ["M", "T", "W", "T", "F", "S", "S"].map((d) => `<span class="dow">${d}</span>`).join("");
+  cells += "<span></span>".repeat(lead);
+  for (let d = 1; d <= n; d++) {
+    const k = `${y}-${pad(m)}-${pad(d)}`;
+    const cls = ["d", days[k] ? "arg" : "", k < TODAY ? "past" : "", k === TODAY ? "today" : ""].join(" ");
+    cells += days[k] ? `<button type="button" class="${cls}" data-k="${k}" aria-label="${fmt(k, { wd: true })}: ${days[k].length} case${days[k].length > 1 ? "s" : ""}">${d}</button>` : `<span class="${cls}">${d}</span>`;
+  }
+  const count = Object.keys(days).filter((k) => k.startsWith(ym)).reduce((s, k) => s + days[k].length, 0);
+  return `<div class="month"><h3>${["January","February","March","April","May","June","July","August","September","October","November","December"][m - 1]} ${y}</h3>
+    <div class="grid7">${cells}</div><span class="small muted">${count} case${count === 1 ? "" : "s"} argued</span></div>`;
+}
+function flashDay(k) {
+  const el = document.getElementById("day-" + k); if (!el) return;
+  el.scrollIntoView({ behavior: "smooth", block: "center" });
+  el.classList.add("flash"); setTimeout(() => el.classList.remove("flash"), 1400);
+}
+
+/* ---------- Decisions ---------- */
+function latestDecisions() {
+  const fromCases = state.cases.filter((c) => c.decided).map((c) => ({ n: c.name, d: c.docket, date: c.decided, vote: c.vote, author: c.author, s: c.holding || c.q, kind: "Merits opinion", pdf: c.opinion, docket: c.docket }));
+  const extra = state.extraOpinions.map((o) => ({ n: o.name, d: o.docket, date: o.date, author: o.author, s: "Opinion released by the Court.", kind: "Opinion", pdf: o.pdf }));
+  return [...fromCases, ...extra, ...SNAP.thisTermRulings].sort((a, b) => b.date.localeCompare(a.date));
+}
+const BENCH = ["R", "T", "A", "S", "K", "G", "Kv", "B", "J"];
+function dots(majList) {
+  const maj = new Set(majList);
+  return `<div class="dots" aria-hidden="true">${BENCH.map((k) => `<span><i class="${maj.has(k) ? "maj" : ""}"></i>${k}</span>`).join("")}</div>`;
+}
+function renderDecisions() {
+  const now = latestDecisions();
+  $("#view-decisions").innerHTML = `
+    <div class="view-head"><span class="eyebrow">Opinions</span><h2>Decisions</h2>
+    <p>Opinions are usually released at 10 a.m. Eastern on announced decision days, with most big cases arriving in May and June.</p></div>
+    <div class="stack"><div class="section-title">This term <small>${now.length} so far</small></div>
+      <div class="rulings">${now.length ? now.map((r) => `<div class="ruling"><div class="stack" style="gap:6px">
+        <span class="meta">${esc(r.kind || "")} · ${fmt(r.date, { y: true })}${r.d ? ` · <span class="mono">No. ${esc(r.d)}</span>` : ""}</span>
+        <h3>${r.docket ? `<button class="linkish" data-case="${esc(r.docket)}">${esc(r.n)}</button>` : esc(r.n)}</h3><p>${esc(r.s || "")}</p>
+        ${r.pdf ? `<a class="small" href="${esc(r.pdf)}" target="_blank" rel="noopener">Read the opinion ↗</a>` : ""}</div>
+        <div class="vote">${r.vote ? `<span class="vote-num">${esc(r.vote)}</span>` : ""}${r.dissent ? dots(BENCH.filter((k) => !r.dissent.includes(k))) : ""}<span class="small muted">${esc(r.author || "")}</span></div></div>`).join("")
+        : `<div class="empty">No opinions yet this term. Argued cases will appear here when they are decided.</div>`}</div></div>
+    <div class="stack"><div class="section-title">Last term’s landmark rulings <small>October Term ${SNAP.term - 1}</small></div>
+      <div class="legend"><span><i style="background:var(--ink)"></i>In the majority</span><span><i style="border:1.5px solid var(--ink)"></i>Dissented</span></div>
+      <div class="rulings">${SNAP.lastTerm.map((r) => {
+        const maj = r.maj.split(" ");
+        return `<div class="ruling"><div class="stack" style="gap:6px"><span class="meta">${esc(r.t)} · ${fmt(r.date, { y: true })} · Opinion by ${esc(r.author)}</span>
+          <h3>${esc(r.n)}</h3><p>${esc(r.s)}</p></div>
+          <div class="vote"><span class="vote-num">${maj.length}–${9 - maj.length}</span>${dots(maj)}</div></div>`;
+      }).join("")}</div></div>`;
+}
+
+/* ---------- Emergency docket ---------- */
+function renderEmergency() {
+  $("#view-emergency").innerHTML = `
+    <div class="view-head"><span class="eyebrow">Interim docket</span><h2>Emergency applications</h2>
+    <p>Requests to pause or allow lower-court orders while appeals continue. They are decided without full briefing or argument, often in days, and usually without a full opinion.</p></div>
+    <div class="cols">
+      <div class="stack"><div class="section-title">Pending <small>as of ${fmt(SNAPSHOT_DATE)}</small></div>
+        <ul class="list-plain">${SNAP.pendingEmergency.map((p) => `<li><a href="${esc(p.link)}" target="_blank" rel="noopener"><b>${esc(p.n)}</b></a><span class="meta">${p.d ? `No. ${esc(p.d)} · ` : ""}Filed ${fmt(p.filed, { y: true })}</span><span>${esc(p.s)}</span></li>`).join("")}</ul></div>
+      <div class="stack"><div class="section-title">Recently decided</div>
+        <ul class="list-plain">${SNAP.thisTermRulings.map((r) => `<li><b>${esc(r.n)}</b><span class="meta">${fmt(r.date, { y: true })} · ${esc(r.vote)} · ${esc(r.author)}</span><span>${esc(r.s)}</span></li>`).join("")}</ul></div>
+    </div>
+    <div class="stack"><div class="section-title">Last term on the emergency docket <small>OT${SNAP.term - 1}, SCOTUSblog analysis</small></div>
+      <div class="tiles">
+        <div class="tile"><b>123</b><span>applications resolved</span></div>
+        <div class="tile"><b>5 of 9</b><span>Trump administration requests granted (56%)</span></div>
+        <div class="tile"><b>50%</b><span>of 36 substantive applications granted</span></div>
+        <div class="tile"><b>18 days</b><span>average from filing to ruling</span></div>
+        <div class="tile"><b>0 of 41</b><span>requests to halt an execution granted</span></div>
+        <div class="tile"><b>61%</b><span>of substantive applications drew a public disagreement</span></div>
+      </div>
+      <div class="panel"><div class="section-title" style="border:0;padding:0">Administration’s win rate fell <small>share of its emergency requests granted</small></div>
+        <div class="hbars">
+          <div class="hbar"><span>OT2024 · 19 of 21</span><span class="track"><span class="fill" style="display:block;width:90%"></span></span><span class="n">90%</span></div>
+          <div class="hbar"><span>OT2025 · 5 of 9</span><span class="track"><span class="fill" style="display:block;width:56%;background:var(--accent)"></span></span><span class="n">56%</span></div>
+        </div>
+        <div class="hbars"><span class="small muted">Noted dissents or disagreements on substantive applications, OT2025</span>
+          ${[["Jackson", 15], ["Sotomayor", 13], ["Kagan", 12], ["Barrett", 0]].map(([n, v]) => `<div class="hbar"><span>${n}</span><span class="track"><span class="fill" style="display:block;width:${(v / 15) * 100}%"></span></span><span class="n">${v}</span></div>`).join("")}
+        </div>
+      </div>
+    </div>`;
+}
+
+/* ---------- Justices ---------- */
+function age(born) { const b = parseDay(born), t = parseDay(TODAY); let a = t.getFullYear() - b.getFullYear(); if (t < new Date(t.getFullYear(), b.getMonth(), b.getDate())) a--; return a; }
+function renderJustices() {
+  const avgAge = Math.round(JUSTICES.reduce((s, j) => s + age(j.born), 0) / 9);
+  $("#view-justices").innerHTML = `
+    <div class="view-head"><span class="eyebrow">The bench</span><h2>Nine justices</h2>
+    <p>Listed in order of seniority, the order in which they speak at conference and vote. Average age ${avgAge}. Six were appointed by Republican presidents and three by Democratic presidents.</p></div>
+    <div class="bench">${JUSTICES.map((j) => {
+      const yrs = Math.floor(daysBetween(j.since, TODAY) / 365.25);
+      return `<article class="justice"><div class="j-head"><span class="seal">${j.k}</span><div><h3>${esc(j.name)}</h3><span class="small muted">${j.role}</span></div></div>
+        <dl><dt>Appointed by</dt><dd>${j.by}</dd><dt>Joined the Court</dt><dd>${fmt(j.since, { y: true })}</dd><dt>Years serving</dt><dd>${yrs}</dd><dt>Age</dt><dd>${age(j.born)}</dd></dl>
+        <p class="j-note">${j.note}</p></article>`;
+    }).join("")}</div>
+    <div class="panel"><div class="section-title" style="border:0;padding:0">Closest pairs last term <small>overall agreement</small></div>
+      <ul class="facts"><li><span>Roberts and Kavanaugh</span><b>94%</b></li><li><span>Thomas and Alito</span><b>94%</b></li><li><span>Sotomayor and Kagan</span><b>94%</b></li><li><span>Sotomayor and Jackson</span><b>94%</b></li></ul></div>`;
+}
+
+/* ---------- Stats ---------- */
+function renderStats() {
+  const c = countByStatus();
+  const topicCounts = {}, courtCounts = {};
+  state.cases.forEach((x) => { topicCounts[x.topic] = (topicCounts[x.topic] || 0) + 1; const k = /Cir\./.test(x.lower || "") ? x.lower : x.lower ? "State courts" : "Other"; courtCounts[k] = (courtCounts[k] || 0) + 1; });
+  const bars = (obj) => { const e = Object.entries(obj).sort((a, b) => b[1] - a[1]); const max = e[0]?.[1] || 1;
+    return e.map(([k, v]) => `<div class="hbar"><span>${esc(k)}</span><span class="track"><span class="fill" style="display:block;width:${(v / max) * 100}%"></span></span><span class="n">${v}</span></div>`).join(""); };
+  const gm = state.cases.filter((x) => x.granted).map((x) => x.granted.slice(0, 7)).sort();
+  const grantsByMonth = {}; gm.forEach((m) => (grantsByMonth[m] = (grantsByMonth[m] || 0) + 1));
+  $("#view-stats").innerHTML = `
+    <div class="view-head"><span class="eyebrow">By the numbers</span><h2>Term statistics</h2>
+    <p>This term’s figures update with the docket. Last term’s figures come from SCOTUSblog’s end-of-term analysis.</p></div>
+    <div class="stack"><div class="section-title">October Term ${state.term} so far</div>
+      <div class="tiles">
+        <div class="tile"><b>${state.cases.filter((x) => !x.dismissed).length}</b><span>cases on the docket</span></div>
+        <div class="tile"><b>${c.argued + c.decided}</b><span>argued</span></div>
+        <div class="tile"><b>${c.decided}</b><span>decided</span></div>
+        <div class="tile"><b>${c.scheduled}</b><span>scheduled for argument</span></div>
+        <div class="tile"><b>${c.granted}</b><span>awaiting an argument date</span></div>
+        <div class="tile"><b>${c.dismissed}</b><span>dismissed</span></div>
+      </div>
+      <div class="cols">
+        <div class="panel"><div class="section-title" style="border:0;padding:0">Cases by topic</div><div class="hbars">${bars(topicCounts)}</div></div>
+        <div class="panel"><div class="section-title" style="border:0;padding:0">Where the cases come from</div><div class="hbars">${bars(courtCounts)}</div>
+          <div class="section-title" style="border:0;padding:0;margin-top:8px">Grants by month</div><div class="hbars">${Object.entries(grantsByMonth).map(([m, v]) => { const mx = Math.max(...Object.values(grantsByMonth)); return `<div class="hbar"><span>${fmt(m)}</span><span class="track"><span class="fill" style="display:block;width:${(v / mx) * 100}%"></span></span><span class="n">${v}</span></div>`; }).join("")}</div></div>
+      </div>
+    </div>
+    <div class="stack"><div class="section-title">October Term ${SNAP.term - 1} in review</div>
+      <div class="panel"><div class="section-title" style="border:0;padding:0">How the Court split <small>share of decisions</small></div>
+        <div class="legend"><span><i style="background:var(--muted)"></i>OT2024</span><span><i style="background:var(--accent)"></i>OT2025</span></div>
+        <div class="chart-wrap">${splitChart()}</div></div>
+      <div class="cols">
+        <div class="panel"><div class="section-title" style="border:0;padding:0">In the majority most often</div>
+          <div class="hbars">${[["Roberts", 95], ["Kavanaugh", 95], ["Barrett", 92], ["Jackson", 67]].map(([n, v]) => `<div class="hbar"><span>${n}</span><span class="track"><span class="fill" style="display:block;width:${v}%"></span></span><span class="n">${v}%</span></div>`).join("")}</div>
+          <span class="small muted">SCOTUSblog reported these four. Jackson was in the majority in 41% of non-unanimous cases.</span></div>
+        <div class="panel"><ul class="facts">
+          <li><span>Opinions written (majority, concurring, dissenting)</span><b>164</b></li>
+          <li><span>Majority opinions</span><b>66</b></li>
+          <li><span>Longest decision: Trump v. Barbara</span><b>60,400 words</b></li>
+          <li><span>Longest wait after argument: Landor v. Louisiana</span><b>226 days</b></li>
+          <li><span>Fastest signed decision: Hikma v. Amarin</span><b>37 days</b></li>
+          <li><span>Post-2005 average unanimity</span><b>44.5%</b></li>
+        </ul></div>
+      </div>
+    </div>`;
+}
+function splitChart() {
+  const rows = [["Unanimous", 42.4, 44], ["6–3 decisions", 15.2, 28.8], ["Ideological 6–3", 9, 22.7], ["Liberals dissenting together", 15, 24.2]];
+  const W = 640, rowH = 54, top = 10, left = 190, right = 56, H = top + rows.length * rowH + 24;
+  const x = (v) => left + (v / 50) * (W - left - right);
+  let g = "";
+  for (const t of [0, 10, 20, 30, 40, 50]) g += `<line x1="${x(t)}" x2="${x(t)}" y1="${top}" y2="${H - 22}" stroke="var(--line)"/><text x="${x(t)}" y="${H - 6}" text-anchor="middle" font-size="11" fill="var(--muted)">${t}%</text>`;
+  rows.forEach(([label, a, b], i) => {
+    const y = top + i * rowH + 8;
+    g += `<text x="0" y="${y + 18}" font-size="13" fill="var(--ink)">${label}</text>`;
+    g += `<rect x="${left}" y="${y}" width="${x(a) - left}" height="14" rx="2" fill="var(--muted)"/><text x="${x(a) + 6}" y="${y + 11}" font-size="11" fill="var(--muted)">${a}%</text>`;
+    g += `<rect x="${left}" y="${y + 18}" width="${x(b) - left}" height="14" rx="2" fill="var(--accent)"/><text x="${x(b) + 6}" y="${y + 29}" font-size="11" font-weight="600" fill="var(--ink)">${b}%</text>`;
+  });
+  return `<svg viewBox="0 0 ${W} ${H}" role="img" aria-label="Unanimous 42.4% to 44%; 6–3 decisions 15.2% to 28.8%; ideological 6–3 9% to 22.7%; liberal joint dissents 15% to 24.2%">${g}</svg>`;
+}
+
+/* ---------- Reading ---------- */
+let readingSource = "";
+function renderReading() {
+  const sources = [...new Set(state.articles.map((a) => a.source))];
+  const list = state.articles.filter((a) => !readingSource || a.source === readingSource);
+  $("#view-reading").innerHTML = `
+    <div class="view-head"><span class="eyebrow">Reading</span><h2>News and analysis</h2>
+    <p>Coverage of the Court from SCOTUSblog and other outlets${state.liveAt ? ", with new SCOTUSblog posts added automatically" : ""}. Links open the original article.</p></div>
+    <div class="seg" id="srcSeg"><button type="button" data-src="" aria-pressed="${!readingSource}">All</button>${sources.map((s) => `<button type="button" data-src="${esc(s)}" aria-pressed="${s === readingSource}">${esc(s)}</button>`).join("")}</div>
+    <div class="articles">${list.map((a) => `<div class="article"><time>${fmt(a.date, { y: a.date.length > 7 })}</time><div>
+      <a href="${esc(a.link)}" target="_blank" rel="noopener">${esc(a.title)}</a>${a.fresh ? `<span class="new-badge">New</span>` : ""}
+      <p>${esc(a.source)}${a.author ? " · " + esc(a.author) : ""}</p>${a.summary ? `<p>${esc(a.summary)}</p>` : ""}</div></div>`).join("")}</div>
+    <div class="stack"><div class="section-title">Primary sources</div>
+      <div class="links-grid">
+        <a href="https://www.supremecourt.gov/opinions/slipopinion/${String(state.term).slice(-2)}" target="_blank" rel="noopener"><b>Slip opinions</b><span>supremecourt.gov</span></a>
+        <a href="https://www.supremecourt.gov/oral_arguments/argument_calendars.aspx" target="_blank" rel="noopener"><b>Argument calendars</b><span>supremecourt.gov</span></a>
+        <a href="https://www.supremecourt.gov/oral_arguments/argument_audio.aspx" target="_blank" rel="noopener"><b>Argument audio</b><span>supremecourt.gov</span></a>
+        <a href="https://www.supremecourt.gov/orders/ordersofthecourt/${String(state.term).slice(-2)}" target="_blank" rel="noopener"><b>Order lists</b><span>supremecourt.gov</span></a>
+        <a href="https://www.scotusblog.com/" target="_blank" rel="noopener"><b>SCOTUSblog</b><span>News and case files</span></a>
+        <a href="https://www.oyez.org/cases/${state.term}" target="_blank" rel="noopener"><b>Oyez</b><span>Case summaries and audio</span></a>
+      </div></div>`;
+  $("#srcSeg").addEventListener("click", (e) => { const b = e.target.closest("button"); if (!b) return; readingSource = b.dataset.src; renderReading(); });
+}
+
+/* ---------- Header + boot ---------- */
+function renderHeader() {
+  $("#termLine").innerHTML = `<b>October Term ${state.term}</b> · ${state.cases.length} cases · Next update automatic`;
+  const pill = $("#livePill");
+  if (state.liveAt) {
+    const d = new Date(state.liveAt);
+    pill.dataset.state = "live";
+    $("#liveText").textContent = `Live · updated ${MONTHS[d.getMonth()]} ${d.getDate()}, ${d.toLocaleTimeString([], { hour: "numeric", minute: "2-digit" })}`;
+  } else {
+    pill.dataset.state = "snapshot";
+    $("#liveText").textContent = `Saved data · ${fmt(SNAPSHOT_DATE, { y: true })}`;
+  }
+  $("#footSources").innerHTML = `Data: Supreme Court of the United States, Oyez, SCOTUSblog and other outlets linked on each item. ${state.liveAt ? "Live updates are pulled from GitHub every few hours." : "Showing data saved " + fmt(SNAPSHOT_DATE, { y: true }) + "."}`;
+}
+function renderAll() {
+  renderHeader(); renderTabs(); renderOverview(); renderDocket(); renderCalendar();
+  renderDecisions(); renderEmergency(); renderJustices(); renderStats(); renderReading();
+  show(current, false);
+}
+
+const initial = (location.hash || "").replace("#", "");
+if (TABS.some(([t]) => t === initial)) current = initial;
+renderAll();
+loadLive().then((ok) => { if (ok) renderAll(); });
+window.addEventListener("hashchange", () => show(location.hash.replace("#", ""), false));
+document.addEventListener("visibilitychange", () => { if (document.visibilityState === "visible") loadLive().then((ok) => ok && renderAll()); });
+
+/* ---------- Install as an app ---------- */
+let deferredPrompt = null;
+window.addEventListener("beforeinstallprompt", (e) => { e.preventDefault(); deferredPrompt = e; $("#installBtn").hidden = false; });
+$("#installBtn").addEventListener("click", async () => { if (!deferredPrompt) return; deferredPrompt.prompt(); try { await deferredPrompt.userChoice; } catch {} deferredPrompt = null; $("#installBtn").hidden = true; });
+if (/iphone|ipad|ipod/i.test(navigator.userAgent) && !window.navigator.standalone) $("#iosHint").hidden = false;
+if ("serviceWorker" in navigator && location.protocol === "https:") {
+  navigator.serviceWorker.register("sw.js").catch(() => {});
+}
+</script>
+</body>
+</html>

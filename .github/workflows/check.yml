@@ -1,0 +1,38 @@
+name: Render check
+
+# Manual only: opens the site in a headless browser and saves screenshots
+# and a console report to the "screens" branch.
+on:
+  workflow_dispatch: {}
+  push:
+    branches: [render-check]
+
+permissions:
+  contents: write
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - name: Install browser
+        run: |
+          npm i --no-save playwright@1.47.2
+          npx playwright install --with-deps chromium
+      - name: Serve and check
+        run: |
+          (cd site && python3 -m http.server 8080 >/dev/null 2>&1 &)
+          sleep 2
+          node scripts/check.mjs
+      - name: Publish screenshots
+        run: |
+          cd screens
+          git init -q -b screens
+          git config user.name "scotus-tracker-bot"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A && git commit -qm "Render check [skip netlify]"
+          git push -f "https://x-access-token:${{ github.token }}@github.com/${{ github.repository }}.git" screens

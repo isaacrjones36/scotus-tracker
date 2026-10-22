@@ -17,6 +17,10 @@ test("slip opinion rows", () => {
   assert.equal(r.length, 2);
   assert.deepEqual(r[0], { date: "2026-10-14", docket: "26A476", name: "FCC v. Brown", author: "PC", pdf: "https://www.supremecourt.gov/opinions/26pdf/26a476_k537.pdf" });
   assert.equal(r[1].author, "G");
+  // Layout without a "Revised" column, with a query string on the PDF link.
+  const alt = parseSlipOpinions(`<tr><td>1</td><td>10/14/26</td><td>26A476</td><td><a href='/opinions/26pdf/26a476_k537.pdf?v=2'>FCC v. Brown</a></td><td>PC</td><td>610/1</td></tr>`);
+  assert.equal(alt[0].author, "PC");
+  assert.equal(alt[0].pdf, "https://www.supremecourt.gov/opinions/26pdf/26a476_k537.pdf?v=2");
 });
 
 test("rss items", () => {

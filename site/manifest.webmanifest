@@ -1,0 +1,16 @@
+{
+  "name": "SCOTUS Tracker",
+  "short_name": "SCOTUS",
+  "description": "The Supreme Court's docket, argument calendar, decisions, justices and stats.",
+  "start_url": "./#overview",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#f3f4f1",
+  "theme_color": "#1c2430",
+  "icons": [
+    { "src": "icon-192.png", "sizes": "192x192", "type": "image/png" },
+    { "src": "icon-512.png", "sizes": "512x512", "type": "image/png" },
+    { "src": "icon-maskable.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" },
+    { "src": "icon.svg", "sizes": "any", "type": "image/svg+xml" }
+  ]
+}
