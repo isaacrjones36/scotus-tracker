@@ -1,5 +1,5 @@
 {
- "generatedAt": "2026-10-22T02:23:15.154Z",
+ "generatedAt": "2026-10-22T02:32:49.613Z",
  "term": 2026,
  "sources": {
   "oyez": {
@@ -332,8 +332,8 @@
    "date": "2026-10-14",
    "docket": "26A476",
    "name": "FCC v. Brown",
-   "author": "610/1",
-   "pdf": null
+   "author": "PC",
+   "pdf": "https://www.supremecourt.gov/opinions/26pdf/26a476_k537.pdf"
   }
  ],
  "articles": [
