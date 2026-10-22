@@ -1,1 +1,541 @@
-{}
+{
+ "generatedAt": "2026-10-22T02:23:15.154Z",
+ "term": 2026,
+ "sources": {
+  "oyez": {
+   "ok": true,
+   "count": 31
+  },
+  "opinions": {
+   "ok": true,
+   "count": 1
+  },
+  "scotusblog": {
+   "ok": true,
+   "count": 25
+  }
+ },
+ "cases": [
+  {
+   "docket": "25-170",
+   "name": "Suncor Energy (U.S.A.) Inc. v. County Commissioners of Boulder County",
+   "granted": "2026-02-23",
+   "argued": "2026-10-05",
+   "decided": null,
+   "question": "1. Does the Court have statutory and Article III jurisdiction to hear this case? 2. Does federal law preclude state-law claims seeking relief for injuries allegedly caused by the effects of interstate and international greenhouse-gas emissions on the global climate?",
+   "href": "https://api.oyez.org/cases/2026/25-170",
+   "oyez": "https://www.oyez.org/cases/2026/25-170"
+  },
+  {
+   "docket": "25-297",
+   "name": "Zorn v. Linton",
+   "granted": null,
+   "argued": null,
+   "decided": null,
+   "question": null,
+   "href": "https://api.oyez.org/cases/2026/25-297",
+   "oyez": "https://www.oyez.org/cases/2026/25-297"
+  },
+  {
+   "docket": "25-352",
+   "name": "Younge v. Fulton Judicial Circuit District Attorney's Office, Georgia",
+   "granted": "2026-03-30",
+   "argued": null,
+   "decided": null,
+   "question": "May a defendant raise an affirmative defense it never pleaded in its answer as the sole basis for a summary judgment motion — without seeking to amend its answer — and does it matter that the court's scheduling order deadline would have barred any such amendment?",
+   "href": "https://api.oyez.org/cases/2026/25-352",
+   "oyez": "https://www.oyez.org/cases/2026/25-352"
+  },
+  {
+   "docket": "25-579",
+   "name": "Department of the Air Force v. Prutehi Guahan",
+   "granted": "2026-03-29",
+   "argued": "2026-10-07",
+   "decided": null,
+   "question": "1. When the federal government submits a permit application to continue disposing of hazardous waste, does that submission count as a final, reviewable government decision under federal law? 2. Before submitting that permit application, must the federal government first conduct the broad environmental review that federal law generally requires—even though the hazardous waste permitting process alr",
+   "href": "https://api.oyez.org/cases/2026/25-579",
+   "oyez": "https://www.oyez.org/cases/2026/25-579"
+  },
+  {
+   "docket": "25-248",
+   "name": "DISTRICT OF COLUMBIA v. R.W.",
+   "granted": null,
+   "argued": null,
+   "decided": null,
+   "question": null,
+   "href": "https://api.oyez.org/cases/2026/25-248",
+   "oyez": "https://www.oyez.org/cases/2026/25-248"
+  },
+  {
+   "docket": "25-581",
+   "name": "St. Mary Catholic Parish v. Roy",
+   "granted": "2026-04-20",
+   "argued": null,
+   "decided": null,
+   "question": "Does a law lack general applicability under the Free Exercise Clause only if it permits unfettered discretion or secular exemptions, and does the rule against excluding religious institutions from public benefits apply only to explicit government bans on participation?",
+   "href": "https://api.oyez.org/cases/2026/25-581",
+   "oyez": "https://www.oyez.org/cases/2026/25-581"
+  },
+  {
+   "docket": "25-735",
+   "name": "Johnson v. United States Congress",
+   "granted": "2026-04-06",
+   "argued": "2026-10-05",
+   "decided": null,
+   "question": "Did the Veterans’ Judicial Review Act stripp district courts of the jurisdiction, recognized by this court in Johnson v. Robison, to hear challenges to the constitutionality of acts of Congress affecting veterans’ benefits?",
+   "href": "https://api.oyez.org/cases/2026/25-735",
+   "oyez": "https://www.oyez.org/cases/2026/25-735"
+  },
+  {
+   "docket": "25-966",
+   "name": "Department of Labor v. Sun Valley Orchards, LLC",
+   "granted": "2026-04-27",
+   "argued": null,
+   "decided": null,
+   "question": "May the Department of Labor legally use its own administrative proceedings to collect money from employers who violate worker contracts, or does the Constitution require such cases to be decided by a federal court?",
+   "href": "https://api.oyez.org/cases/2026/25-966",
+   "oyez": "https://www.oyez.org/cases/2026/25-966"
+  },
+  {
+   "docket": "25-5343",
+   "name": "Beaird v. United States",
+   "granted": "2026-04-20",
+   "argued": "2026-10-13",
+   "decided": null,
+   "question": "Does Stinson v. United States still correctly state the rule for deference that courts must give the Commentary of the Federal Sentencing Guidelines?",
+   "href": "https://api.oyez.org/cases/2026/25-5343",
+   "oyez": "https://www.oyez.org/cases/2026/25-5343"
+  },
+  {
+   "docket": "25-767",
+   "name": "Margolin v. National Association of Immigration Judges",
+   "granted": null,
+   "argued": null,
+   "decided": null,
+   "question": null,
+   "href": "https://api.oyez.org/cases/2026/25-767",
+   "oyez": "https://www.oyez.org/cases/2026/25-767"
+  },
+  {
+   "docket": "25-580",
+   "name": "Whitton v. Dixon",
+   "granted": null,
+   "argued": null,
+   "decided": null,
+   "question": null,
+   "href": "https://api.oyez.org/cases/2026/25-580",
+   "oyez": "https://www.oyez.org/cases/2026/25-580"
+  },
+  {
+   "docket": "25-183",
+   "name": "Crowther v. Board of Regents of the University System of Georgia",
+   "granted": "2026-05-18",
+   "argued": null,
+   "decided": null,
+   "question": "Does Title IX give employees of federally funded educational institutions the right to sue for sex discrimination in employment?",
+   "href": "https://api.oyez.org/cases/2026/25-183",
+   "oyez": "https://www.oyez.org/cases/2026/25-183"
+  },
+  {
+   "docket": "25-5930",
+   "name": "Maxwell v. Thomas",
+   "granted": "2026-06-01",
+   "argued": null,
+   "decided": null,
+   "question": "Can a federal prisoner use a habeas corpus petition to challenge the government's calculation of First Step Act time credits in order to seek an earlier transfer to a halfway house or home confinement?",
+   "href": "https://api.oyez.org/cases/2026/25-5930",
+   "oyez": "https://www.oyez.org/cases/2026/25-5930"
+  },
+  {
+   "docket": "25-748",
+   "name": "McCarthy v. Hernandez",
+   "granted": null,
+   "argued": null,
+   "decided": null,
+   "question": null,
+   "href": "https://api.oyez.org/cases/2026/25-748",
+   "oyez": "https://www.oyez.org/cases/2026/25-748"
+  },
+  {
+   "docket": "25-1311",
+   "name": "Apple Inc. v. Epic Games, Inc.",
+   "granted": "2026-06-30",
+   "argued": null,
+   "decided": null,
+   "question": "May a court hold a party in civil contempt for violating the “spirit” of an injunction that does not explicitly address the conduct at issue, or must a contempt finding rest on an order that clearly and unambiguously prohibits the precise conduct in question?",
+   "href": "https://api.oyez.org/cases/2026/25-1311",
+   "oyez": "https://www.oyez.org/cases/2026/25-1311"
+  },
+  {
+   "docket": "25-886",
+   "name": "Genalo v. Black",
+   "granted": "2026-06-15",
+   "argued": null,
+   "decided": null,
+   "question": "Does the Constitution require a bond hearing when mandatory immigration detention extends for many months without any individual review of whether continued detention is necessary, and is this challenge moot after the detainee was released?",
+   "href": "https://api.oyez.org/cases/2026/25-886",
+   "oyez": "https://www.oyez.org/cases/2026/25-886"
+  },
+  {
+   "docket": "25-965",
+   "name": "Grand v. City of University Heights, Ohio",
+   "granted": "2026-06-30",
+   "argued": null,
+   "decided": null,
+   "question": "Does the First Amendment’s chilling-effect doctrine allow a plaintiff to bring a lawsuit based on government threats that deterred religious exercise and assembly, even without a final land-use decision from the government?",
+   "href": "https://api.oyez.org/cases/2026/25-965",
+   "oyez": "https://www.oyez.org/cases/2026/25-965"
+  },
+  {
+   "docket": "25-1003",
+   "name": "Guerrero v. Johnson",
+   "granted": "2026-06-15",
+   "argued": null,
+   "decided": null,
+   "question": "Does a claim rely on a “previously unavailable” new rule of constitutional law, permitting a successive habeas petition, when the prisoner could have raised a claim based on that rule in an earlier petition?",
+   "href": "https://api.oyez.org/cases/2026/25-1003",
+   "oyez": "https://www.oyez.org/cases/2026/25-1003"
+  },
+  {
+   "docket": "25-159",
+   "name": "Hoffmann v. WBI Energy Transmission, Inc.",
+   "granted": "2026-06-29",
+   "argued": null,
+   "decided": null,
+   "question": "When a private company uses the Natural Gas Act to seize someone’s land for natural gas infrastructure, does state law determine how much compensation the landowner receives?",
+   "href": "https://api.oyez.org/cases/2026/25-159",
+   "oyez": "https://www.oyez.org/cases/2026/25-159"
+  },
+  {
+   "docket": "25-840",
+   "name": "International Partners for Ethical Care, Inc. v. Ferguson",
+   "granted": "2026-06-29",
+   "argued": null,
+   "decided": null,
+   "question": "Do parents have standing to challenge state laws that provide for alternative notification procedures when a runaway minor seeks gender-affirming care, rather than standard parental notification protocols?",
+   "href": "https://api.oyez.org/cases/2026/25-840",
+   "oyez": "https://www.oyez.org/cases/2026/25-840"
+  },
+  {
+   "docket": "25-6623",
+   "name": "Kian v. Florida",
+   "granted": "2026-06-15",
+   "argued": null,
+   "decided": null,
+   "question": "Do the Sixth and Fourteenth Amendments guarantee a defendant charged with a serious felony the right to a 12-person jury trial?",
+   "href": "https://api.oyez.org/cases/2026/25-6623",
+   "oyez": "https://www.oyez.org/cases/2026/25-6623"
+  },
+  {
+   "docket": "25-417",
+   "name": "Nielsen v. Watanabe",
+   "granted": "2026-06-22",
+   "argued": null,
+   "decided": null,
+   "question": "Can a federal prisoner sue prison officials for money damages under the Bivens doctrine for deliberate indifference to a non-life-threatening injury?",
+   "href": "https://api.oyez.org/cases/2026/25-417",
+   "oyez": "https://www.oyez.org/cases/2026/25-417"
+  },
+  {
+   "docket": "25-1223",
+   "name": "Montoya Palacios v. Liggins",
+   "granted": "2026-06-29",
+   "argued": null,
+   "decided": null,
+   "question": "Before removing a noncitizen to a third country, must the government give that person a chance to raise fears of persecution or harm in that country?",
+   "href": "https://api.oyez.org/cases/2026/25-1223",
+   "oyez": "https://www.oyez.org/cases/2026/25-1223"
+  },
+  {
+   "docket": "25-1017",
+   "name": "Republican National Committee v. Mi Familia Vota",
+   "granted": "2026-06-29",
+   "argued": null,
+   "decided": null,
+   "question": "Does the National Voter Registration Act or a federal consent decree prohibit Arizona from requiring voter-registration applicants to provide documentary proof of U.S. citizenship, and does the National Voter Registration Act prohibit Arizona from canceling the registrations of non-citizens within 90 days of a federal election?",
+   "href": "https://api.oyez.org/cases/2026/25-1017",
+   "oyez": "https://www.oyez.org/cases/2026/25-1017"
+  },
+  {
+   "docket": "24-1016",
+   "name": "RiseandShine Corporation v. PepsiCo, Inc.",
+   "granted": "2026-06-29",
+   "argued": null,
+   "decided": null,
+   "question": "Is trademark strength a question of fact, rather than a question of law, in a trademark infringement likelihood-of-confusion analysis?",
+   "href": "https://api.oyez.org/cases/2026/24-1016",
+   "oyez": "https://www.oyez.org/cases/2026/24-1016"
+  },
+  {
+   "docket": "25-238",
+   "name": "Viramontes v. Cook County, Illinois",
+   "granted": "2026-06-30",
+   "argued": null,
+   "decided": null,
+   "question": "Does the Second Amendment protect an individual’s right to own AR-15-style and similar semiautomatic rifles?",
+   "href": "https://api.oyez.org/cases/2026/25-238",
+   "oyez": "https://www.oyez.org/cases/2026/25-238"
+  },
+  {
+   "docket": "25-842",
+   "name": "Wassily v. Blanche",
+   "granted": "2026-06-29",
+   "argued": null,
+   "decided": null,
+   "question": "Can a noncitizen whose asylum status has been terminated apply to become a lawful permanent resident based on having once been granted asylum?",
+   "href": "https://api.oyez.org/cases/2026/25-842",
+   "oyez": "https://www.oyez.org/cases/2026/25-842"
+  },
+  {
+   "docket": "26-426",
+   "name": "Department of Homeland Security v. D. V. D.",
+   "granted": "2026-09-29",
+   "argued": null,
+   "decided": null,
+   "question": "Does federal immigration law require the government to notify noncitizens and give them an opportunity to assert fear of persecution or torture before removing them to a country not named in their removal orders?",
+   "href": "https://api.oyez.org/cases/2026/26-426",
+   "oyez": "https://www.oyez.org/cases/2026/26-426"
+  },
+  {
+   "docket": "25-1131",
+   "name": "Missionaries of Saint John the Baptist, Inc. v. Frederic",
+   "granted": "2026-10-01",
+   "argued": null,
+   "decided": null,
+   "question": "Does a zoning ordinance that prevents a religious organization from building a religious shrine on its own chosen property impose a burden on religious practice significant enough to trigger federal land-use protections?",
+   "href": "https://api.oyez.org/cases/2026/25-1131",
+   "oyez": "https://www.oyez.org/cases/2026/25-1131"
+  },
+  {
+   "docket": "25-1349",
+   "name": "Marschner v. Marschner",
+   "granted": "2026-10-01",
+   "argued": null,
+   "decided": null,
+   "question": "Does federal law bar state courts from enforcing a divorce settlement in which a veteran agreed to compensate his ex-spouse when his later disability benefits reduce her share of his retirement pay?",
+   "href": "https://api.oyez.org/cases/2026/25-1349",
+   "oyez": "https://www.oyez.org/cases/2026/25-1349"
+  },
+  {
+   "docket": "26-104",
+   "name": "Rhoney v. Barbosa da Cunha",
+   "granted": "2026-10-01",
+   "argued": null,
+   "decided": null,
+   "question": "Does the federal law requiring mandatory detention for noncitizens “seeking admission” apply to people who entered the United States illegally years ago and have remained here without formal admission?",
+   "href": "https://api.oyez.org/cases/2026/26-104",
+   "oyez": "https://www.oyez.org/cases/2026/26-104"
+  }
+ ],
+ "opinions": [
+  {
+   "date": "2026-10-14",
+   "docket": "26A476",
+   "name": "FCC v. Brown",
+   "author": "610/1",
+   "pdf": null
+  }
+ ],
+ "articles": [
+  {
+   "title": "Trump administration asks justices to allow border wall construction to continue",
+   "link": "https://www.scotusblog.com/2026/10/trump-administration-asks-justices-to-allow-border-wall-construction-to-continue/",
+   "date": "2026-10-21",
+   "author": "Amy Howe",
+   "summary": "",
+   "source": "SCOTUSblog"
+  },
+  {
+   "title": "Justices leave lower court order in place preventing Trump administration from implementing transgender inmate policy",
+   "link": "https://www.scotusblog.com/2026/10/justices-leave-in-place-lower-court-order-preventing-trump-administration-from-implementing-new-/",
+   "date": "2026-10-21",
+   "author": "Amy Howe",
+   "summary": "",
+   "source": "SCOTUSblog"
+  },
+  {
+   "title": "The court’s third-country removal case has high stakes but will likely be decided on technical grounds",
+   "link": "https://www.scotusblog.com/2026/10/the-courts-third-country-removal-case-has-high-stakes-but-will-likely-be-decided-on-technical-gr/",
+   "date": "2026-10-21",
+   "author": "César Cuauhtémoc García Hernández",
+   "summary": "",
+   "source": "SCOTUSblog"
+  },
+  {
+   "title": "The Supreme Court website, the interim docket, and a whole lot of inside baseball",
+   "link": "https://www.scotusblog.com/2026/10/the-supreme-court-website-the-interim-docket-and-a-whole-lot-of-inside-baseball/",
+   "date": "2026-10-21",
+   "author": "Kelsey Dallas",
+   "summary": "",
+   "source": "SCOTUSblog"
+  },
+  {
+   "title": "Justice Kagan comments on “deeply conservative” court",
+   "link": "https://www.scotusblog.com/2026/10/justice-kagan-comments-on-deeply-conservative-court/",
+   "date": "2026-10-21",
+   "author": "Kelsey Dallas, Amy Howe",
+   "summary": "Plus, the Supreme Court’s next major case on the free exercise of religion.",
+   "source": "SCOTUSblog"
+  },
+  {
+   "title": "The separation and expansion of powers between Congress and the president",
+   "link": "https://www.scotusblog.com/2026/10/the-separation-and-expansion-of-powers-between-congress-and-the-president/",
+   "date": "2026-10-20",
+   "author": "Josh Blackman, Randy Barnett",
+   "summary": "",
+   "source": "SCOTUSblog"
+  },
+  {
+   "title": "The Supreme Court’s next major case on the free exercise of religion",
+   "link": "https://www.scotusblog.com/2026/10/the-supreme-courts-next-major-case-on-the-free-exercise-of-religion/",
+   "date": "2026-10-20",
+   "author": "Erwin Chemerinsky",
+   "summary": "",
+   "source": "SCOTUSblog"
+  },
+  {
+   "title": "Justices grant two significant cases",
+   "link": "https://www.scotusblog.com/2026/10/justices-grant-two-significant-cases/",
+   "date": "2026-10-20",
+   "author": "Kelsey Dallas, Blake Fox",
+   "summary": "The cases address race and school admissions and the federal ban on home distilleries.",
+   "source": "SCOTUSblog"
+  },
+  {
+   "title": "Supreme Court declines to take up cases on vehicle seizures in Chicago, 9/11 plea disputes, and the president’s removal of National Labor Relations Board members",
+   "link": "https://www.scotusblog.com/2026/10/supreme-court-declines-to-take-up-cases-on-vehicle-seizures-in-chicago-911-plea-disputes-and-the/",
+   "date": "2026-10-19",
+   "author": "Amy Howe",
+   "summary": "",
+   "source": "SCOTUSblog"
+  },
+  {
+   "title": "Justices take up case on race and school admissions",
+   "link": "https://www.scotusblog.com/2026/10/justices-take-up-case-on-race-and-school-admissions/",
+   "date": "2026-10-19",
+   "author": "Amy Howe",
+   "summary": "",
+   "source": "SCOTUSblog"
+  },
+  {
+   "title": "Supreme Court agrees to consider federal ban on home distilleries",
+   "link": "https://www.scotusblog.com/2026/10/supreme-court-agrees-to-consider-federal-ban-on-home-distilleries/",
+   "date": "2026-10-19",
+   "author": "Amy Howe",
+   "summary": "",
+   "source": "SCOTUSblog"
+  },
+  {
+   "title": "Where the Supreme Court favors Trump on the emergency docket – and where it doesn’t",
+   "link": "https://www.scotusblog.com/2026/10/where-the-supreme-court-favors-trump-on-the-emergency-docket-and-where-it-doesnt/",
+   "date": "2026-10-19",
+   "author": "Adam Feldman",
+   "summary": "",
+   "source": "SCOTUSblog"
+  },
+  {
+   "title": "Trump administration asks SCOTUS to limit lower courts’ power",
+   "link": "https://www.scotusblog.com/2026/10/trump-administration-asks-scotus-to-limit-lower-courts-power/",
+   "date": "2026-10-19",
+   "author": "Kelsey Dallas, Nora Collins",
+   "summary": "",
+   "source": "SCOTUSblog"
+  },
+  {
+   "title": "Trump administration asks justices to determine courts’ ability to vacate federal agency actions",
+   "link": "https://www.scotusblog.com/2026/10/trump-administration-asks-justices-to-determine-courts-ability-to-vacate-federal-agency-actions/",
+   "date": "2026-10-16",
+   "author": "Amy Howe",
+   "summary": "",
+   "source": "SCOTUSblog"
+  },
+  {
+   "title": "Court unlikely to alter deference to sentencing guidelines commentary",
+   "link": "https://www.scotusblog.com/2026/10/court-unlikely-to-alter-deference-to-sentencing-guidelines-commentary/",
+   "date": "2026-10-16",
+   "author": "Richard Cooke",
+   "summary": "",
+   "source": "SCOTUSblog"
+  },
+  {
+   "title": "Getting the Second Amendment right",
+   "link": "https://www.scotusblog.com/2026/10/getting-the-second-amendment-right/",
+   "date": "2026-10-16",
+   "author": "Haley Proctor",
+   "summary": "",
+   "source": "SCOTUSblog"
+  },
+  {
+   "title": "The Supreme Court and the midterms",
+   "link": "https://www.scotusblog.com/2026/10/the-supreme-court-and-the-midterms/",
+   "date": "2026-10-16",
+   "author": "Nora Collins",
+   "summary": "",
+   "source": "SCOTUSblog"
+  },
+  {
+   "title": "An immigration-heavy term",
+   "link": "https://www.scotusblog.com/2026/10/an-immigration-heavy-term/",
+   "date": "2026-10-16",
+   "author": "Kelsey Dallas, Nora Collins",
+   "summary": "Plus, a bipartisan group of states and the NFL are urging SCOTUS to rule on prediction markets.",
+   "source": "SCOTUSblog"
+  },
+  {
+   "title": "Challengers ask court to pause agreement between Texas and the DOJ on deportation proceedings",
+   "link": "https://www.scotusblog.com/2026/10/challengers-ask-court-to-pause-agreement-between-texas-and-the-doj-on-deportation-proceedings/",
+   "date": "2026-10-15",
+   "author": "Amy Howe",
+   "summary": "",
+   "source": "SCOTUSblog"
+  },
+  {
+   "title": "The Second Amendment and AR-15s: an unexplained betrayal of originalism?",
+   "link": "https://www.scotusblog.com/2026/10/the-second-amendment-and-ar-15s-an-unexplained-betrayal-of-originalism/",
+   "date": "2026-10-15",
+   "author": "Rory Little",
+   "summary": "",
+   "source": "SCOTUSblog"
+  },
+  {
+   "title": "The Tribal Supreme Court Project",
+   "link": "https://www.scotusblog.com/2026/10/the-tribal-supreme-court-project/",
+   "date": "2026-10-15",
+   "author": "Matthew L.M. Fletcher",
+   "summary": "",
+   "source": "SCOTUSblog"
+  },
+  {
+   "title": "The immigration term",
+   "link": "https://www.scotusblog.com/2026/10/the-immigration-term/",
+   "date": "2026-10-15",
+   "author": "Kelsey Dallas",
+   "summary": "",
+   "source": "SCOTUSblog"
+  },
+  {
+   "title": "SCOTUS considers new take on old law",
+   "link": "https://www.scotusblog.com/2026/10/scotus-considers-new-take-on-old-law/",
+   "date": "2026-10-15",
+   "author": "Kelsey Dallas",
+   "summary": "Plus, a political ad rate decision on the interim docket.",
+   "source": "SCOTUSblog"
+  },
+  {
+   "title": "Justices grant Trump administration’s request to pause lower court ruling in political ad rate dispute",
+   "link": "https://www.scotusblog.com/2026/10/justices-grant-trump-administrations-request-to-pause-lower-court-ruling-in-political-ad-rate-di/",
+   "date": "2026-10-14",
+   "author": "Amy Howe",
+   "summary": "",
+   "source": "SCOTUSblog"
+  },
+  {
+   "title": "Court appears likely to allow internet suit based on decades-old video privacy law to go forward",
+   "link": "https://www.scotusblog.com/2026/10/court-appears-likely-to-allow-internet-suit-based-on-decades-old-video-privacy-law-to-go-forward/",
+   "date": "2026-10-14",
+   "author": "Amy Howe",
+   "summary": "",
+   "source": "SCOTUSblog"
+  }
+ ]
+}
