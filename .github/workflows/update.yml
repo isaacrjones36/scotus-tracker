@@ -1,0 +1,41 @@
+name: Update court data
+
+on:
+  schedule:
+    # Every 3 hours. Decisions usually post at 10:00 a.m. ET; 14:17 UTC catches them.
+    - cron: "17 2,5,8,11,14,17,20,23 * * *"
+  workflow_dispatch: {}
+
+permissions:
+  contents: write
+
+concurrency:
+  group: update-data
+  cancel-in-progress: false
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - name: Test parsers
+        run: node --test scripts/parse.test.mjs
+      - name: Fetch latest data
+        run: node scripts/update.mjs
+      - name: Commit if changed
+        run: |
+          if git diff --quiet -- site/data/live.json; then
+            echo "Nothing new."
+            exit 0
+          fi
+          git config user.name "scotus-tracker-bot"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add site/data/live.json
+          # [skip netlify] keeps data refreshes from triggering a Netlify deploy;
+          # the site reads this file straight from GitHub instead.
+          git commit -m "Update court data [skip netlify]"
+          git push
