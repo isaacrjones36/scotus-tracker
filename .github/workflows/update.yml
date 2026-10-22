@@ -5,6 +5,9 @@ on:
     # Every 3 hours. Decisions usually post at 10:00 a.m. ET; 14:17 UTC catches them.
     - cron: "17 2,5,8,11,14,17,20,23 * * *"
   workflow_dispatch: {}
+  push:
+    branches: [main]
+    paths: ["scripts/**", ".github/workflows/update.yml"]
 
 permissions:
   contents: write
