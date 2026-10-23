@@ -1,5 +1,5 @@
 {
- "generatedAt": "2026-10-23T02:46:30.832Z",
+ "generatedAt": "2026-10-23T14:51:52.267Z",
  "term": 2026,
  "sources": {
   "oyez": {
@@ -338,6 +338,30 @@
  ],
  "articles": [
   {
+   "title": "The Ten Commandments, classroom walls, and the establishment clause",
+   "link": "https://www.scotusblog.com/2026/10/the-ten-commandments-classroom-walls-and-the-establishment-clause/",
+   "date": "2026-10-23",
+   "author": "Jordan Lorence",
+   "summary": "",
+   "source": "SCOTUSblog"
+  },
+  {
+   "title": "Chief Justice John Roberts’ long game on executive power",
+   "link": "https://www.scotusblog.com/2026/10/chief-justice-john-roberts-long-game-on-executive-power/",
+   "date": "2026-10-23",
+   "author": "Rodger Citron",
+   "summary": "",
+   "source": "SCOTUSblog"
+  },
+  {
+   "title": "The interim docket remains active",
+   "link": "https://www.scotusblog.com/2026/10/the-interim-docket-remains-active/",
+   "date": "2026-10-23",
+   "author": "Kelsey Dallas, Nora Collins",
+   "summary": "Plus, how recent Supreme Court rulings are shaping the midterm elections.",
+   "source": "SCOTUSblog"
+  },
+  {
    "title": "Supreme Court allows New Hampshire to restrict use of student IDs in voting",
    "link": "https://www.scotusblog.com/2026/10/supreme-court-allows-new-hampshire-to-restrict-use-of-student-ids-in-voting/",
    "date": "2026-10-23",
@@ -510,30 +534,6 @@
    "link": "https://www.scotusblog.com/2026/10/the-supreme-court-and-the-midterms/",
    "date": "2026-10-16",
    "author": "Nora Collins",
-   "summary": "",
-   "source": "SCOTUSblog"
-  },
-  {
-   "title": "An immigration-heavy term",
-   "link": "https://www.scotusblog.com/2026/10/an-immigration-heavy-term/",
-   "date": "2026-10-16",
-   "author": "Kelsey Dallas, Nora Collins",
-   "summary": "Plus, a bipartisan group of states and the NFL are urging SCOTUS to rule on prediction markets.",
-   "source": "SCOTUSblog"
-  },
-  {
-   "title": "Challengers ask court to pause agreement between Texas and the DOJ on deportation proceedings",
-   "link": "https://www.scotusblog.com/2026/10/challengers-ask-court-to-pause-agreement-between-texas-and-the-doj-on-deportation-proceedings/",
-   "date": "2026-10-15",
-   "author": "Amy Howe",
-   "summary": "",
-   "source": "SCOTUSblog"
-  },
-  {
-   "title": "The Second Amendment and AR-15s: an unexplained betrayal of originalism?",
-   "link": "https://www.scotusblog.com/2026/10/the-second-amendment-and-ar-15s-an-unexplained-betrayal-of-originalism/",
-   "date": "2026-10-15",
-   "author": "Rory Little",
    "summary": "",
    "source": "SCOTUSblog"
   }
