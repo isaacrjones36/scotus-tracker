@@ -1,5 +1,5 @@
 {
- "generatedAt": "2026-10-22T23:42:21.576Z",
+ "generatedAt": "2026-10-23T02:46:30.832Z",
  "term": 2026,
  "sources": {
   "oyez": {
@@ -338,6 +338,14 @@
  ],
  "articles": [
   {
+   "title": "Supreme Court allows New Hampshire to restrict use of student IDs in voting",
+   "link": "https://www.scotusblog.com/2026/10/supreme-court-allows-new-hampshire-to-restrict-use-of-student-ids-in-voting/",
+   "date": "2026-10-23",
+   "author": "Amy Howe",
+   "summary": "",
+   "source": "SCOTUSblog"
+  },
+  {
    "title": "Trump administration and Texas urge court to leave their agreement on deportation proceedings in place",
    "link": "https://www.scotusblog.com/2026/10/trump-administration-and-texas-urge-court-to-leave-their-agreement-on-deportation-proceedings-in/",
    "date": "2026-10-22",
@@ -526,14 +534,6 @@
    "link": "https://www.scotusblog.com/2026/10/the-second-amendment-and-ar-15s-an-unexplained-betrayal-of-originalism/",
    "date": "2026-10-15",
    "author": "Rory Little",
-   "summary": "",
-   "source": "SCOTUSblog"
-  },
-  {
-   "title": "The Tribal Supreme Court Project",
-   "link": "https://www.scotusblog.com/2026/10/the-tribal-supreme-court-project/",
-   "date": "2026-10-15",
-   "author": "Matthew L.M. Fletcher",
    "summary": "",
    "source": "SCOTUSblog"
   }
