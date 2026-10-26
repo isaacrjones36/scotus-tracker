@@ -1,5 +1,5 @@
 {
- "generatedAt": "2026-10-26T13:31:25.567Z",
+ "generatedAt": "2026-10-26T15:42:45.711Z",
  "term": 2026,
  "sources": {
   "oyez": {
@@ -338,6 +338,22 @@
  ],
  "articles": [
   {
+   "title": "The Supreme Court as agent of the people",
+   "link": "https://www.scotusblog.com/2026/10/the-supreme-court-as-agent-of-the-people/",
+   "date": "2026-10-26",
+   "author": "Chad Squitieri",
+   "summary": "",
+   "source": "SCOTUSblog"
+  },
+  {
+   "title": "When the Supreme Court blessed zoning",
+   "link": "https://www.scotusblog.com/2026/10/when-the-supreme-court-blessed-zoning/",
+   "date": "2026-10-26",
+   "author": "Anastasia Boden",
+   "summary": "",
+   "source": "SCOTUSblog"
+  },
+  {
    "title": "Trump-related cases coming to the court",
    "link": "https://www.scotusblog.com/2026/10/trump-related-cases-coming-to-the-court/",
    "date": "2026-10-26",
@@ -518,22 +534,6 @@
    "link": "https://www.scotusblog.com/2026/10/trump-administration-asks-justices-to-determine-courts-ability-to-vacate-federal-agency-actions/",
    "date": "2026-10-16",
    "author": "Amy Howe",
-   "summary": "",
-   "source": "SCOTUSblog"
-  },
-  {
-   "title": "Court unlikely to alter deference to sentencing guidelines commentary",
-   "link": "https://www.scotusblog.com/2026/10/court-unlikely-to-alter-deference-to-sentencing-guidelines-commentary/",
-   "date": "2026-10-16",
-   "author": "Richard Cooke",
-   "summary": "",
-   "source": "SCOTUSblog"
-  },
-  {
-   "title": "Getting the Second Amendment right",
-   "link": "https://www.scotusblog.com/2026/10/getting-the-second-amendment-right/",
-   "date": "2026-10-16",
-   "author": "Haley Proctor",
    "summary": "",
    "source": "SCOTUSblog"
   }
