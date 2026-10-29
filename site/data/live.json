@@ -1,10 +1,10 @@
 {
- "generatedAt": "2026-10-28T15:04:30.130Z",
+ "generatedAt": "2026-10-29T02:58:02.479Z",
  "term": 2026,
  "sources": {
   "oyez": {
    "ok": true,
-   "count": 31
+   "count": 36
   },
   "opinions": {
    "ok": true,
@@ -325,6 +325,56 @@
    "question": "Does the federal law requiring mandatory detention for noncitizens “seeking admission” apply to people who entered the United States illegally years ago and have remained here without formal admission?",
    "href": "https://api.oyez.org/cases/2026/26-104",
    "oyez": "https://www.oyez.org/cases/2026/26-104"
+  },
+  {
+   "docket": "25-1103",
+   "name": "U.S. DOGE Service v. United States District Court for the District of Columbia",
+   "granted": "2026-10-13",
+   "argued": null,
+   "decided": null,
+   "question": null,
+   "href": "https://api.oyez.org/cases/2026/25-1103",
+   "oyez": "https://www.oyez.org/cases/2026/25-1103"
+  },
+  {
+   "docket": "25-1343",
+   "name": "Blanche v. Ozurumba",
+   "granted": "2026-10-13",
+   "argued": null,
+   "decided": null,
+   "question": null,
+   "href": "https://api.oyez.org/cases/2026/25-1343",
+   "oyez": "https://www.oyez.org/cases/2026/25-1343"
+  },
+  {
+   "docket": "25-7026",
+   "name": "Berry v. United States",
+   "granted": "2026-10-13",
+   "argued": null,
+   "decided": null,
+   "question": null,
+   "href": "https://api.oyez.org/cases/2026/25-7026",
+   "oyez": "https://www.oyez.org/cases/2026/25-7026"
+  },
+  {
+   "docket": "26-12",
+   "name": "Association for Education Fairness v. Montgomery County Board of Education",
+   "granted": "2026-10-19",
+   "argued": null,
+   "decided": null,
+   "question": null,
+   "href": "https://api.oyez.org/cases/2026/26-12",
+   "oyez": "https://www.oyez.org/cases/2026/26-12"
+  },
+  {
+   "docket": "26-204",
+   "name": "Department of Justice v. McNutt",
+   "granted": "2026-10-19",
+   "argued": null,
+   "decided": null,
+   "question": null,
+   "href": "https://api.oyez.org/cases/2026/26-204",
+   "oyez": "https://www.oyez.org/cases/2026/26-204"
   }
  ],
  "opinions": [
