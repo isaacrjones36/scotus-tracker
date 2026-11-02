@@ -1,5 +1,5 @@
 {
- "generatedAt": "2026-11-02T15:04:58.348Z",
+ "generatedAt": "2026-11-02T18:04:37.730Z",
  "term": 2026,
  "sources": {
   "oyez": {
@@ -388,6 +388,22 @@
  ],
  "articles": [
   {
+   "title": "Is Montgomery affirmative action’s final chapter?",
+   "link": "https://www.scotusblog.com/2026/11/is-montgomery-affirmative-actions-final-chapter/",
+   "date": "2026-11-02",
+   "author": "Brian Fitzpatrick",
+   "summary": "",
+   "source": "SCOTUSblog"
+  },
+  {
+   "title": "Justice Kagan: firing point blank in Smith & Wesson v. Estados Unidos de Mexico",
+   "link": "https://www.scotusblog.com/2026/11/justice-kagan-firing-point-blank-in-smith-wesson-v-estados-unidos-de-mexico/",
+   "date": "2026-11-02",
+   "author": "Kendall Gray",
+   "summary": "",
+   "source": "SCOTUSblog"
+  },
+  {
    "title": "The SCOTUS forecasting contest",
    "link": "https://www.scotusblog.com/2026/11/the-scotus-forecasting-contest/",
    "date": "2026-11-02",
@@ -568,22 +584,6 @@
    "link": "https://www.scotusblog.com/2026/10/chief-justice-john-roberts-long-game-on-executive-power/",
    "date": "2026-10-23",
    "author": "Rodger Citron",
-   "summary": "",
-   "source": "SCOTUSblog"
-  },
-  {
-   "title": "The interim docket remains active",
-   "link": "https://www.scotusblog.com/2026/10/the-interim-docket-remains-active/",
-   "date": "2026-10-23",
-   "author": "Kelsey Dallas, Nora Collins",
-   "summary": "Plus, how recent Supreme Court rulings are shaping the midterm elections.",
-   "source": "SCOTUSblog"
-  },
-  {
-   "title": "Supreme Court allows New Hampshire to restrict use of student IDs in voting",
-   "link": "https://www.scotusblog.com/2026/10/supreme-court-allows-new-hampshire-to-restrict-use-of-student-ids-in-voting/",
-   "date": "2026-10-23",
-   "author": "Amy Howe",
    "summary": "",
    "source": "SCOTUSblog"
   }
