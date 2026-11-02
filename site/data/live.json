@@ -1,5 +1,5 @@
 {
- "generatedAt": "2026-11-01T20:48:03.482Z",
+ "generatedAt": "2026-11-02T15:04:58.348Z",
  "term": 2026,
  "sources": {
   "oyez": {
@@ -40,7 +40,7 @@
    "docket": "25-352",
    "name": "Younge v. Fulton Judicial Circuit District Attorney's Office, Georgia",
    "granted": "2026-03-30",
-   "argued": null,
+   "argued": "2026-11-02",
    "decided": null,
    "question": "May a defendant raise an affirmative defense it never pleaded in its answer as the sole basis for a summary judgment motion — without seeking to amend its answer — and does it matter that the court's scheduling order deadline would have barred any such amendment?",
    "href": "https://api.oyez.org/cases/2026/25-352",
@@ -70,7 +70,7 @@
    "docket": "25-581",
    "name": "St. Mary Catholic Parish v. Roy",
    "granted": "2026-04-20",
-   "argued": null,
+   "argued": "2026-11-03",
    "decided": null,
    "question": "Does a law lack general applicability under the Free Exercise Clause only if it permits unfettered discretion or secular exemptions, and does the rule against excluding religious institutions from public benefits apply only to explicit government bans on participation?",
    "href": "https://api.oyez.org/cases/2026/25-581",
@@ -138,9 +138,9 @@
   },
   {
    "docket": "25-5930",
-   "name": "Maxwell v. Thomas",
+   "name": "Maxwell v. Dinis",
    "granted": "2026-06-01",
-   "argued": null,
+   "argued": "2026-11-02",
    "decided": null,
    "question": "Can a federal prisoner use a habeas corpus petition to challenge the government's calculation of First Step Act time credits in order to seek an earlier transfer to a halfway house or home confinement?",
    "href": "https://api.oyez.org/cases/2026/25-5930",
@@ -190,7 +190,7 @@
    "docket": "25-1003",
    "name": "Guerrero v. Johnson",
    "granted": "2026-06-15",
-   "argued": null,
+   "argued": "2026-11-04",
    "decided": null,
    "question": "Does a claim rely on a “previously unavailable” new rule of constitutional law, permitting a successive habeas petition, when the prisoner could have raised a claim based on that rule in an earlier petition?",
    "href": "https://api.oyez.org/cases/2026/25-1003",
@@ -332,7 +332,7 @@
    "granted": "2026-10-13",
    "argued": null,
    "decided": null,
-   "question": null,
+   "question": "May a court order broad discovery against a presidential advisory body within the Executive Office of the President to decide whether that body is required to comply with the Freedom of Information Act?",
    "href": "https://api.oyez.org/cases/2026/25-1103",
    "oyez": "https://www.oyez.org/cases/2026/25-1103"
   },
@@ -342,7 +342,7 @@
    "granted": "2026-10-13",
    "argued": null,
    "decided": null,
-   "question": null,
+   "question": "Does cooking meals for the leaders of a terrorist organization constitute material support to that organization under federal immigration law’s bar on asylum eligibility?",
    "href": "https://api.oyez.org/cases/2026/25-1343",
    "oyez": "https://www.oyez.org/cases/2026/25-1343"
   },
@@ -352,7 +352,7 @@
    "granted": "2026-10-13",
    "argued": null,
    "decided": null,
-   "question": null,
+   "question": "When a federal appeals court’s own prior rulings foreclose a prisoner’s argument but courts in other circuits have sided with the prisoner on that same legal issue, must the appeals court grant the prisoner permission to appeal?",
    "href": "https://api.oyez.org/cases/2026/25-7026",
    "oyez": "https://www.oyez.org/cases/2026/25-7026"
   },
@@ -387,6 +387,22 @@
   }
  ],
  "articles": [
+  {
+   "title": "The SCOTUS forecasting contest",
+   "link": "https://www.scotusblog.com/2026/11/the-scotus-forecasting-contest/",
+   "date": "2026-11-02",
+   "author": "SCOTUSblog Staff",
+   "summary": "",
+   "source": "SCOTUSblog"
+  },
+  {
+   "title": "A surge in cases on religion and schools",
+   "link": "https://www.scotusblog.com/2026/11/a-surge-in-cases-on-religion-and-schools/",
+   "date": "2026-11-02",
+   "author": "Kelsey Dallas, Nora Collins",
+   "summary": "Plus, the justices will hear argument in two cases today, the first day of the November sitting.",
+   "source": "SCOTUSblog"
+  },
   {
    "title": "Justices to debate when an established rule is “previously unavailable” in habeas case",
    "link": "https://www.scotusblog.com/2026/10/justices-to-debate-when-an-established-rule-is-previously-unavailable-in-prisoner-habeas-cases/",
@@ -568,22 +584,6 @@
    "link": "https://www.scotusblog.com/2026/10/supreme-court-allows-new-hampshire-to-restrict-use-of-student-ids-in-voting/",
    "date": "2026-10-23",
    "author": "Amy Howe",
-   "summary": "",
-   "source": "SCOTUSblog"
-  },
-  {
-   "title": "Trump administration and Texas urge court to leave their agreement on deportation proceedings in place",
-   "link": "https://www.scotusblog.com/2026/10/trump-administration-and-texas-urge-court-to-leave-their-agreement-on-deportation-proceedings-in/",
-   "date": "2026-10-22",
-   "author": "Amy Howe",
-   "summary": "",
-   "source": "SCOTUSblog"
-  },
-  {
-   "title": "When denying a stay denies the rule of international law",
-   "link": "https://www.scotusblog.com/2026/10/when-denying-a-stay-denies-the-rule-of-international-law/",
-   "date": "2026-10-22",
-   "author": "Martin Flaherty",
    "summary": "",
    "source": "SCOTUSblog"
   }
