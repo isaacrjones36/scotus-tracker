@@ -1,5 +1,5 @@
 {
- "generatedAt": "2026-11-02T20:54:52.671Z",
+ "generatedAt": "2026-11-02T23:47:13.855Z",
  "term": 2026,
  "sources": {
   "oyez": {
@@ -388,7 +388,15 @@
  ],
  "articles": [
   {
-   "title": "Trump administration asks Supreme Court to intervene in California ballots dispute",
+   "title": "Court will hear arguments in January on six-person juries, religious zoning dispute",
+   "link": "https://www.scotusblog.com/2026/11/court-will-hear-arguments-in-january-on-six-person-juries-religious-zoning-dispute/",
+   "date": "2026-11-02",
+   "author": "Amy Howe",
+   "summary": "",
+   "source": "SCOTUSblog"
+  },
+  {
+   "title": "Supreme Court declines Trump administration's request to intervene in California ballot dispute",
    "link": "https://www.scotusblog.com/2026/11/trump-administration-asks-supreme-court-to-intervene-in-california-ballots-dispute/",
    "date": "2026-11-02",
    "author": "Amy Howe",
@@ -404,7 +412,7 @@
    "source": "SCOTUSblog"
   },
   {
-   "title": "Justice Kagan: firing point blank in Smith & Wesson v. Estados Unidos de Mexico",
+   "title": "Justice Kagan: firing point blank in Smith & Wesson v. Estados Unidos Mexicanos",
    "link": "https://www.scotusblog.com/2026/11/justice-kagan-firing-point-blank-in-smith-wesson-v-estados-unidos-de-mexico/",
    "date": "2026-11-02",
    "author": "Kendall Gray",
@@ -577,14 +585,6 @@
    "date": "2026-10-26",
    "author": "Kelsey Dallas, Nora Collins",
    "summary": "Plus, the chief justice’s long game on executive power.",
-   "source": "SCOTUSblog"
-  },
-  {
-   "title": "The Ten Commandments, classroom walls, and the establishment clause",
-   "link": "https://www.scotusblog.com/2026/10/the-ten-commandments-classroom-walls-and-the-establishment-clause/",
-   "date": "2026-10-23",
-   "author": "Jordan Lorence",
-   "summary": "",
    "source": "SCOTUSblog"
   }
  ]
