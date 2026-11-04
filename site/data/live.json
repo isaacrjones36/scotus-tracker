@@ -1,5 +1,5 @@
 {
- "generatedAt": "2026-11-03T20:57:57.167Z",
+ "generatedAt": "2026-11-04T15:01:57.313Z",
  "term": 2026,
  "sources": {
   "oyez": {
@@ -388,6 +388,22 @@
  ],
  "articles": [
   {
+   "title": "Mootness, maps, and motor vehicles",
+   "link": "https://www.scotusblog.com/2026/11/hooch-hardball-and-halloween/",
+   "date": "2026-11-04",
+   "author": "John Elwood",
+   "summary": "",
+   "source": "SCOTUSblog"
+  },
+  {
+   "title": "Court hears argument in religious discrimination dispute",
+   "link": "https://www.scotusblog.com/2026/11/court-hears-argument-in-religious-discrimination-dispute/",
+   "date": "2026-11-04",
+   "author": "Kelsey Dallas",
+   "summary": "Plus, Trump’s winning streak in election cases has screeched to a halt.",
+   "source": "SCOTUSblog"
+  },
+  {
    "title": "Court seems poised to side with Catholic preschools in religious discrimination dispute",
    "link": "https://www.scotusblog.com/2026/11/court-seems-poised-to-side-with-catholic-preschools-in-religious-discrimination-dispute/",
    "date": "2026-11-03",
@@ -568,22 +584,6 @@
    "link": "https://www.scotusblog.com/2026/10/assessing-the-first-round-of-oral-arguments-of-the-2026-27-term/",
    "date": "2026-10-27",
    "author": "Adam Feldman",
-   "summary": "",
-   "source": "SCOTUSblog"
-  },
-  {
-   "title": "The Trump administration’s attempt to prevent noncitizen voting and the role of the Supreme Court",
-   "link": "https://www.scotusblog.com/2026/10/the-trump-administrations-attempt-to-prevent-noncitizen-voting-and-the-role-of-supreme-court/",
-   "date": "2026-10-27",
-   "author": "Edward Foley",
-   "summary": "",
-   "source": "SCOTUSblog"
-  },
-  {
-   "title": "Another Trump term?",
-   "link": "https://www.scotusblog.com/2026/10/another-trump-term/",
-   "date": "2026-10-27",
-   "author": "Amy Howe",
    "summary": "",
    "source": "SCOTUSblog"
   }
