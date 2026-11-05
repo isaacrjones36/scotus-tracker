@@ -1,5 +1,5 @@
 {
- "generatedAt": "2026-11-05T15:10:21.452Z",
+ "generatedAt": "2026-11-05T17:58:10.887Z",
  "term": 2026,
  "sources": {
   "oyez": {
@@ -362,7 +362,7 @@
    "granted": "2026-10-19",
    "argued": null,
    "decided": null,
-   "question": null,
+   "question": "Must parents who claim a school district designed its admissions rules to discriminate by race show that the targeted group’s share of admitted students fell below its share of applicants?",
    "href": "https://api.oyez.org/cases/2026/26-12",
    "oyez": "https://www.oyez.org/cases/2026/26-12"
   },
@@ -372,7 +372,7 @@
    "granted": "2026-10-19",
    "argued": null,
    "decided": null,
-   "question": null,
+   "question": "Does Congress’s power to tax, together with its power to pass laws needed to carry that power out, allow it to ban distilling spirits in a home or in a shed or yard connected to a home?",
    "href": "https://api.oyez.org/cases/2026/26-204",
    "oyez": "https://www.oyez.org/cases/2026/26-204"
   }
@@ -387,6 +387,22 @@
   }
  ],
  "articles": [
+  {
+   "title": "St. Mary and the shrinking reach of Smith",
+   "link": "https://www.scotusblog.com/2026/11/st-mary-and-the-shrinking-reach-of-smith/",
+   "date": "2026-11-05",
+   "author": "Stephanie Barclay",
+   "summary": "",
+   "source": "SCOTUSblog"
+  },
+  {
+   "title": "Who Is Elena Kagan? Ideology, strategy, and the art of disagreement",
+   "link": "https://www.scotusblog.com/2026/11/who-is-elena-kagan-ideology-strategy-and-the-art-of-disagreement/",
+   "date": "2026-11-05",
+   "author": "Adam Feldman",
+   "summary": "",
+   "source": "SCOTUSblog"
+  },
   {
    "title": "Court to consider the reach of Article III courts in immigration contract dispute",
    "link": "https://www.scotusblog.com/2026/11/court-to-consider-the-reach-of-article-iii-courts-in-immigration-contract-dispute/",
@@ -569,22 +585,6 @@
    "date": "2026-10-29",
    "author": "Kelsey Dallas",
    "summary": "Plus, the Supreme Court wants to hear from Hillary Clinton.",
-   "source": "SCOTUSblog"
-  },
-  {
-   "title": "Court to consider federal inmate’s ability to use habeas to accelerate transfer to a halfway house or home confinement",
-   "link": "https://www.scotusblog.com/2026/10/court-to-consider-federal-inmates-ability-to-use-habeas-to-accelerate-transfer-to-a-halfway-hous/",
-   "date": "2026-10-28",
-   "author": "Richard Cooke",
-   "summary": "",
-   "source": "SCOTUSblog"
-  },
-  {
-   "title": "Justices to decide whether failure to plead an affirmative defense prevents moving for summary judgment on that same defense",
-   "link": "https://www.scotusblog.com/2026/10/justices-to-decide-whether-failure-to-plead-an-affirmative-defense-prevents-moving-for-summary-j/",
-   "date": "2026-10-28",
-   "author": "Rodger Citron",
-   "summary": "",
    "source": "SCOTUSblog"
   }
  ]
