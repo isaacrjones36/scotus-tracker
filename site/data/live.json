@@ -1,5 +1,5 @@
 {
- "generatedAt": "2026-11-05T23:53:02.953Z",
+ "generatedAt": "2026-11-06T14:58:34.530Z",
  "term": 2026,
  "sources": {
   "oyez": {
@@ -388,6 +388,22 @@
  ],
  "articles": [
   {
+   "title": "Democrats won control of Congress. So what does that mean for the Supreme Court?",
+   "link": "https://www.scotusblog.com/2026/11/democrats-won-control-of-congress-what-might-that-mean-for-the-supreme-court/",
+   "date": "2026-11-06",
+   "author": "Kelsey Dallas",
+   "summary": "",
+   "source": "SCOTUSblog"
+  },
+  {
+   "title": "DOJ steps up its investigation into the Dobbs leak",
+   "link": "https://www.scotusblog.com/2026/11/doj-steps-up-its-investigation-into-the-dobbs-leak/",
+   "date": "2026-11-06",
+   "author": "Kelsey Dallas, Nora Collins",
+   "summary": "Plus, the November sitting so far.",
+   "source": "SCOTUSblog"
+  },
+  {
    "title": "Justices grapple with how to apply pretrial procedure rules in improper firing dispute",
    "link": "https://www.scotusblog.com/2026/11/justices-grapple-with-how-to-apply-pretrial-procedure-rules-in-improper-firing-dispute/",
    "date": "2026-11-05",
@@ -569,22 +585,6 @@
    "date": "2026-10-30",
    "author": "Kelsey Dallas, Nora Collins",
    "summary": "Plus, groups urge the court to keep border wall construction on hold",
-   "source": "SCOTUSblog"
-  },
-  {
-   "title": "Groups ask Supreme Court to leave lower court order in place halting border wall construction in southwestern Texas",
-   "link": "https://www.scotusblog.com/2026/10/groups-ask-supreme-court-to-leave-lower-court-order-in-place-halting-border-wall-construction-in/",
-   "date": "2026-10-29",
-   "author": "Amy Howe",
-   "summary": "",
-   "source": "SCOTUSblog"
-  },
-  {
-   "title": "Court to hear argument in religious discrimination challenge brought by Catholic preschools in Colorado",
-   "link": "https://www.scotusblog.com/2026/10/court-to-hear-argument-in-religious-discrimination-challenge-brought-by-catholic-preschools-in-c/",
-   "date": "2026-10-29",
-   "author": "Amy Howe",
-   "summary": "",
    "source": "SCOTUSblog"
   }
  ]
