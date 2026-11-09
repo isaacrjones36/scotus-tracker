@@ -1,5 +1,5 @@
 {
- "generatedAt": "2026-11-09T18:02:05.977Z",
+ "generatedAt": "2026-11-09T21:02:19.108Z",
  "term": 2026,
  "sources": {
   "oyez": {
@@ -8,7 +8,7 @@
   },
   "opinions": {
    "ok": true,
-   "count": 1
+   "count": 2
   },
   "scotusblog": {
    "ok": true,
@@ -384,9 +384,24 @@
    "name": "FCC v. Brown",
    "author": "PC",
    "pdf": "https://www.supremecourt.gov/opinions/26pdf/26a476_k537.pdf"
+  },
+  {
+   "date": "2026-11-09",
+   "docket": "26A560",
+   "name": "Mullin v. Friends of the Ruidosa Church",
+   "author": "PC",
+   "pdf": "https://www.supremecourt.gov/opinions/26pdf/26a560_onkq.pdf"
   }
  ],
  "articles": [
+  {
+   "title": "Supreme Court allows Trump administration to continue border wall construction",
+   "link": "https://www.scotusblog.com/2026/11/supreme-court-allows-trump-administration-to-continue-border-wall-construction/",
+   "date": "2026-11-09",
+   "author": "Amy Howe",
+   "summary": "",
+   "source": "SCOTUSblog"
+  },
   {
    "title": "Court declines to hear dispute tied to George Floyd protests and cases involving former baseball player Roberto Clemente and actor Randy Quaid",
    "link": "https://www.scotusblog.com/2026/11/court-declines-to-hear-dispute-tied-to-george-floyd-protests-and-cases-involving-former-baseball/",
@@ -576,14 +591,6 @@
    "link": "https://www.scotusblog.com/2026/11/trump-administration-asks-supreme-court-to-intervene-in-california-ballots-dispute/",
    "date": "2026-11-02",
    "author": "Amy Howe",
-   "summary": "",
-   "source": "SCOTUSblog"
-  },
-  {
-   "title": "Is Montgomery affirmative action’s final chapter?",
-   "link": "https://www.scotusblog.com/2026/11/is-montgomery-affirmative-actions-final-chapter/",
-   "date": "2026-11-02",
-   "author": "Brian Fitzpatrick",
    "summary": "",
    "source": "SCOTUSblog"
   }
