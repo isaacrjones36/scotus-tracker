@@ -1,10 +1,10 @@
 {
- "generatedAt": "2026-11-10T15:01:33.923Z",
+ "generatedAt": "2026-11-10T20:56:58.072Z",
  "term": 2026,
  "sources": {
   "oyez": {
    "ok": true,
-   "count": 36
+   "count": 38
   },
   "opinions": {
    "ok": true,
@@ -375,6 +375,26 @@
    "question": "Does Congress’s power to tax, together with its power to pass laws needed to carry that power out, allow it to ban distilling spirits in a home or in a shed or yard connected to a home?",
    "href": "https://api.oyez.org/cases/2026/26-204",
    "oyez": "https://www.oyez.org/cases/2026/26-204"
+  },
+  {
+   "docket": "25-498",
+   "name": "Anderson v. Intel Corporation Investment Policy Committee",
+   "granted": "2026-01-16",
+   "argued": "2026-10-06",
+   "decided": null,
+   "question": "Must a complaint alleging a fiduciary breach in ERISA underperformance cases include allegations of a “meaningful benchmark” to survive the pleading stage?",
+   "href": "https://api.oyez.org/cases/2026/25-498",
+   "oyez": "https://www.oyez.org/cases/2026/25-498"
+  },
+  {
+   "docket": "25-459",
+   "name": "Salazar v. Paramount Global",
+   "granted": "2026-01-26",
+   "argued": "2026-10-14",
+   "decided": null,
+   "question": "Does the phrase “goods or services from a video tape service provider,” as used in the Video Privacy Protection Act’s definition of “consumer,” refer to all of a video tape service provider’s goods or services or only to its audiovisual goods or services?",
+   "href": "https://api.oyez.org/cases/2026/25-459",
+   "oyez": "https://www.oyez.org/cases/2026/25-459"
   }
  ],
  "opinions": [
@@ -394,6 +414,14 @@
   }
  ],
  "articles": [
+  {
+   "title": "Court appears unlikely to side with inmate in lawsuit for violation of his constitutional rights",
+   "link": "https://www.scotusblog.com/2026/11/court-appears-unlikely-to-allow-inmates-lawsuit-for-violation-of-his-constitutional-rights/",
+   "date": "2026-11-10",
+   "author": "Amy Howe",
+   "summary": "",
+   "source": "SCOTUSblog"
+  },
   {
    "title": "Trump administration brings White House ballroom battle back to Supreme Court",
    "link": "https://www.scotusblog.com/2026/11/trump-administration-brings-white-house-ballroom-battle-back-to-supreme-court/",
@@ -583,14 +611,6 @@
    "link": "https://www.scotusblog.com/2026/11/will-an-ability-to-hold-federal-officers-accountable-survive-this-term/",
    "date": "2026-11-03",
    "author": "Erwin Chemerinsky",
-   "summary": "",
-   "source": "SCOTUSblog"
-  },
-  {
-   "title": "The border wall dispute isn’t fit for the emergency docket",
-   "link": "https://www.scotusblog.com/2026/11/the-border-wall-dispute-isnt-fit-for-the-emergency-docket/",
-   "date": "2026-11-03",
-   "author": "César Cuauhtémoc García Hernández",
    "summary": "",
    "source": "SCOTUSblog"
   }
