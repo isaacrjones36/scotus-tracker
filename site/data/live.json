@@ -1,5 +1,5 @@
 {
- "generatedAt": "2026-11-11T21:45:28.334Z",
+ "generatedAt": "2026-11-12T15:08:03.606Z",
  "term": 2026,
  "sources": {
   "oyez": {
@@ -415,6 +415,22 @@
  ],
  "articles": [
   {
+   "title": "What Trump cases might soon return to the Supreme Court?",
+   "link": "https://www.scotusblog.com/2026/11/what-trump-cases-might-soon-return-to-the-supreme-court/",
+   "date": "2026-11-12",
+   "author": "Amy Howe",
+   "summary": "",
+   "source": "SCOTUSblog"
+  },
+  {
+   "title": "Dangerous and unusual",
+   "link": "https://www.scotusblog.com/2026/11/dangerous-and-unusual/",
+   "date": "2026-11-12",
+   "author": "Kelsey Dallas",
+   "summary": "Plus, remembering Richard Posner, “a towering figure in the law.”",
+   "source": "SCOTUSblog"
+  },
+  {
    "title": "Justices see immigration contract dispute as raising the possibility of major limits on administrative power",
    "link": "https://www.scotusblog.com/2026/11/justices-see-immigration-contract-dispute-as-raising-the-possibility-of-major-limits-on-administ/",
    "date": "2026-11-11",
@@ -596,22 +612,6 @@
    "date": "2026-11-05",
    "author": "Kelsey Dallas",
    "summary": "Plus, a look at the two cases that will be argued on Monday.",
-   "source": "SCOTUSblog"
-  },
-  {
-   "title": "Court to hear argument on whether and when federal officials can be held liable for violations of the Constitution",
-   "link": "https://www.scotusblog.com/2026/11/court-to-hear-argument-on-whether-and-when-federal-officials-can-be-held-liable-for-violations-o/",
-   "date": "2026-11-04",
-   "author": "Amy Howe",
-   "summary": "",
-   "source": "SCOTUSblog"
-  },
-  {
-   "title": "Justices to contemplate compensation standard for eminent domain on interstate pipelines",
-   "link": "https://www.scotusblog.com/2026/11/justices-to-consider-compensation-standard-for-eminent-domain-on-interstate-pipelines/",
-   "date": "2026-11-04",
-   "author": "Ronald Mann",
-   "summary": "",
    "source": "SCOTUSblog"
   }
  ]
