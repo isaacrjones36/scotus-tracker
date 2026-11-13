@@ -1,5 +1,5 @@
 {
- "generatedAt": "2026-11-12T18:00:29.745Z",
+ "generatedAt": "2026-11-13T15:00:30.912Z",
  "term": 2026,
  "sources": {
   "oyez": {
@@ -415,6 +415,22 @@
  ],
  "articles": [
   {
+   "title": "Tribal property and the Supreme Court",
+   "link": "https://www.scotusblog.com/2026/11/tribal-property-and-the-supreme-court/",
+   "date": "2026-11-13",
+   "author": "Matthew L.M. Fletcher",
+   "summary": "",
+   "source": "SCOTUSblog"
+  },
+  {
+   "title": "The major Trump cases that might come back to SCOTUS",
+   "link": "https://www.scotusblog.com/2026/11/major-trump-cases-that-might-come-back-to-supreme-court/",
+   "date": "2026-11-13",
+   "author": "Kelsey Dallas, Nora Collins",
+   "summary": "Plus, wrapping up the November argument session",
+   "source": "SCOTUSblog"
+  },
+  {
    "title": "What is a discriminatory effect? The Montgomery County case and unpacking when schools may try for racial diversity without using race",
    "link": "https://www.scotusblog.com/2026/11/what-is-a-discriminatory-effect-the-montgomery-county-case-and-unpacking-when-schools-may-try-fo/",
    "date": "2026-11-12",
@@ -595,22 +611,6 @@
    "link": "https://www.scotusblog.com/2026/11/-court-leans-toward-narrow-ruling-on-inmates-use-of-habeas-for-accelerated-transfer-to-a-halfway/",
    "date": "2026-11-05",
    "author": "Richard Cooke",
-   "summary": "",
-   "source": "SCOTUSblog"
-  },
-  {
-   "title": "St. Mary and the shrinking reach of Smith",
-   "link": "https://www.scotusblog.com/2026/11/st-mary-and-the-shrinking-reach-of-smith/",
-   "date": "2026-11-05",
-   "author": "Stephanie Barclay",
-   "summary": "",
-   "source": "SCOTUSblog"
-  },
-  {
-   "title": "Who Is Elena Kagan? Ideology, strategy, and the art of disagreement",
-   "link": "https://www.scotusblog.com/2026/11/who-is-elena-kagan-ideology-strategy-and-the-art-of-disagreement/",
-   "date": "2026-11-05",
-   "author": "Adam Feldman",
    "summary": "",
    "source": "SCOTUSblog"
   }
