@@ -1,5 +1,5 @@
 {
- "generatedAt": "2026-11-13T17:59:03.753Z",
+ "generatedAt": "2026-11-13T21:02:10.222Z",
  "term": 2026,
  "sources": {
   "oyez": {
@@ -415,6 +415,14 @@
  ],
  "articles": [
   {
+   "title": "Supreme Court agrees to hear case on Trump administration’s suspension of asylum",
+   "link": "https://www.scotusblog.com/2026/11/supreme-court-agrees-to-hear-case-on-trump-administrations-suspension-of-asylum/",
+   "date": "2026-11-13",
+   "author": "Amy Howe",
+   "summary": "",
+   "source": "SCOTUSblog"
+  },
+  {
    "title": "This term is not just short on blockbuster cases. It’s short on cases, period.",
    "link": "https://www.scotusblog.com/2026/11/this-term-is-not-just-short-on-blockbuster-cases-its-short-on-cases-period/",
    "date": "2026-11-13",
@@ -604,14 +612,6 @@
    "date": "2026-11-06",
    "author": "Kelsey Dallas, Nora Collins",
    "summary": "Plus, the November sitting so far.",
-   "source": "SCOTUSblog"
-  },
-  {
-   "title": "Justices grapple with how to apply pretrial procedure rules in improper firing dispute",
-   "link": "https://www.scotusblog.com/2026/11/justices-grapple-with-how-to-apply-pretrial-procedure-rules-in-improper-firing-dispute/",
-   "date": "2026-11-05",
-   "author": "Rodger Citron",
-   "summary": "",
    "source": "SCOTUSblog"
   }
  ]
