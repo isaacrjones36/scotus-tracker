@@ -1,5 +1,5 @@
 {
- "generatedAt": "2026-11-13T15:00:30.912Z",
+ "generatedAt": "2026-11-13T17:59:03.753Z",
  "term": 2026,
  "sources": {
   "oyez": {
@@ -90,7 +90,7 @@
    "docket": "25-966",
    "name": "Department of Labor v. Sun Valley Orchards, LLC",
    "granted": "2026-04-27",
-   "argued": null,
+   "argued": "2026-11-10",
    "decided": null,
    "question": "May the Department of Labor legally use its own administrative proceedings to collect money from employers who violate worker contracts, or does the Constitution require such cases to be decided by a federal court?",
    "href": "https://api.oyez.org/cases/2026/25-966",
@@ -200,7 +200,7 @@
    "docket": "25-159",
    "name": "Hoffmann v. WBI Energy Transmission, Inc.",
    "granted": "2026-06-29",
-   "argued": null,
+   "argued": "2026-11-09",
    "decided": null,
    "question": "When a private company uses the Natural Gas Act to seize someone’s land for natural gas infrastructure, does state law determine how much compensation the landowner receives?",
    "href": "https://api.oyez.org/cases/2026/25-159",
@@ -230,7 +230,7 @@
    "docket": "25-417",
    "name": "Nielsen v. Watanabe",
    "granted": "2026-06-22",
-   "argued": null,
+   "argued": "2026-11-09",
    "decided": null,
    "question": "Can a federal prisoner sue prison officials for money damages under the Bivens doctrine for deliberate indifference to a non-life-threatening injury?",
    "href": "https://api.oyez.org/cases/2026/25-417",
@@ -414,6 +414,14 @@
   }
  ],
  "articles": [
+  {
+   "title": "This term is not just short on blockbuster cases. It’s short on cases, period.",
+   "link": "https://www.scotusblog.com/2026/11/this-term-is-not-just-short-on-blockbuster-cases-its-short-on-cases-period/",
+   "date": "2026-11-13",
+   "author": "Kelsey Dallas",
+   "summary": "",
+   "source": "SCOTUSblog"
+  },
   {
    "title": "Tribal property and the Supreme Court",
    "link": "https://www.scotusblog.com/2026/11/tribal-property-and-the-supreme-court/",
@@ -603,14 +611,6 @@
    "link": "https://www.scotusblog.com/2026/11/justices-grapple-with-how-to-apply-pretrial-procedure-rules-in-improper-firing-dispute/",
    "date": "2026-11-05",
    "author": "Rodger Citron",
-   "summary": "",
-   "source": "SCOTUSblog"
-  },
-  {
-   "title": "Court leans toward narrow ruling on inmate’s use of habeas for accelerated transfer to a halfway house or home confinement",
-   "link": "https://www.scotusblog.com/2026/11/-court-leans-toward-narrow-ruling-on-inmates-use-of-habeas-for-accelerated-transfer-to-a-halfway/",
-   "date": "2026-11-05",
-   "author": "Richard Cooke",
    "summary": "",
    "source": "SCOTUSblog"
   }
