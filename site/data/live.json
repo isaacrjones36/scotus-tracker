@@ -1,5 +1,5 @@
 {
- "generatedAt": "2026-11-19T18:01:58.054Z",
+ "generatedAt": "2026-11-19T23:55:40.382Z",
  "term": 2026,
  "sources": {
   "oyez": {
@@ -399,21 +399,29 @@
  ],
  "opinions": [
   {
-   "date": "2026-10-14",
-   "docket": "26A476",
-   "name": "FCC v. Brown",
-   "author": "PC",
-   "pdf": "https://www.supremecourt.gov/opinions/26pdf/26a476_k537.pdf"
-  },
-  {
    "date": "2026-11-09",
    "docket": "26A560",
    "name": "Mullin v. Friends of the Ruidosa Church",
    "author": "PC",
    "pdf": "https://www.supremecourt.gov/opinions/26pdf/26a560_onkq.pdf"
+  },
+  {
+   "date": "2026-10-14",
+   "docket": "26A476",
+   "name": "FCC v. Brown",
+   "author": "PC",
+   "pdf": "https://www.supremecourt.gov/opinions/26pdf/26a476_k537.pdf"
   }
  ],
  "articles": [
+  {
+   "title": "Trump administration withdraws application to Supreme Court to block lower court ruling on protected status for Venezuelan nationals",
+   "link": "https://www.scotusblog.com/2026/11/trump-administration-asks-supreme-court-to-block-lower-court-ruling-keeping-protected-status-in-/",
+   "date": "2026-11-19",
+   "author": "Amy Howe",
+   "summary": "",
+   "source": "SCOTUSblog"
+  },
   {
    "title": "Calls for court packing fail the test of history",
    "link": "https://www.scotusblog.com/2026/11/calls-for-court-packing-fail-the-test-of-history/",
@@ -436,14 +444,6 @@
    "date": "2026-11-19",
    "author": "Kelsey Dallas",
    "summary": "Plus, will the Supreme Court take up this Top Gun-related case?",
-   "source": "SCOTUSblog"
-  },
-  {
-   "title": "Trump administration asks court to block lower court ruling keeping protected status in place for Venezuelan nationals",
-   "link": "https://www.scotusblog.com/2026/11/trump-administration-asks-supreme-court-to-block-lower-court-ruling-keeping-protected-status-in-/",
-   "date": "2026-11-18",
-   "author": "Amy Howe",
-   "summary": "",
    "source": "SCOTUSblog"
   },
   {
