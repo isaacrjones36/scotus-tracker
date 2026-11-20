@@ -1,5 +1,5 @@
 {
- "generatedAt": "2026-11-19T23:55:40.382Z",
+ "generatedAt": "2026-11-20T15:08:49.751Z",
  "term": 2026,
  "sources": {
   "oyez": {
@@ -415,6 +415,22 @@
  ],
  "articles": [
   {
+   "title": "Even justices have regrets",
+   "link": "https://www.scotusblog.com/2026/11/even-justices-have-regrets/",
+   "date": "2026-11-20",
+   "author": "Nora Collins",
+   "summary": "",
+   "source": "SCOTUSblog"
+  },
+  {
+   "title": "Trump administration brings climate grant dispute to SCOTUS",
+   "link": "https://www.scotusblog.com/2026/11/trump-administration-brings-climate-grant-dispute-to-scotus/",
+   "date": "2026-11-20",
+   "author": "Kelsey Dallas, Nora Collins",
+   "summary": "But the administration withdrew an interim docket request.",
+   "source": "SCOTUSblog"
+  },
+  {
    "title": "Trump administration withdraws application to Supreme Court to block lower court ruling on protected status for Venezuelan nationals",
    "link": "https://www.scotusblog.com/2026/11/trump-administration-asks-supreme-court-to-block-lower-court-ruling-keeping-protected-status-in-/",
    "date": "2026-11-19",
@@ -596,22 +612,6 @@
    "date": "2026-11-12",
    "author": "Kelsey Dallas",
    "summary": "Plus, remembering Richard Posner, “a towering figure in the law.”",
-   "source": "SCOTUSblog"
-  },
-  {
-   "title": "Justices see immigration contract dispute as raising the possibility of major limits on administrative power",
-   "link": "https://www.scotusblog.com/2026/11/justices-see-immigration-contract-dispute-as-raising-the-possibility-of-major-limits-on-administ/",
-   "date": "2026-11-11",
-   "author": "Ronald Mann",
-   "summary": "",
-   "source": "SCOTUSblog"
-  },
-  {
-   "title": "Eleven new relists in search of four votes",
-   "link": "https://www.scotusblog.com/2026/11/eleven-new-relists-in-search-of-four-votes/",
-   "date": "2026-11-11",
-   "author": "John Elwood",
-   "summary": "",
    "source": "SCOTUSblog"
   }
  ]
