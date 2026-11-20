@@ -1,5 +1,5 @@
 {
- "generatedAt": "2026-11-20T15:08:49.751Z",
+ "generatedAt": "2026-11-20T18:10:02.626Z",
  "term": 2026,
  "sources": {
   "oyez": {
@@ -415,6 +415,22 @@
  ],
  "articles": [
   {
+   "title": "The next round of Supreme Court forecasts",
+   "link": "https://www.scotusblog.com/2026/11/the-next-round-of-supreme-court-forecasts/",
+   "date": "2026-11-21",
+   "author": "SCOTUSblog Staff",
+   "summary": "",
+   "source": "SCOTUSblog"
+  },
+  {
+   "title": "Criminal law is constitutional law",
+   "link": "https://www.scotusblog.com/2026/11/criminal-law-is-constitutional-law/",
+   "date": "2026-11-20",
+   "author": "Rory Little",
+   "summary": "",
+   "source": "SCOTUSblog"
+  },
+  {
    "title": "Even justices have regrets",
    "link": "https://www.scotusblog.com/2026/11/even-justices-have-regrets/",
    "date": "2026-11-20",
@@ -596,22 +612,6 @@
    "date": "2026-11-12",
    "author": "Stephen Wermiel",
    "summary": "",
-   "source": "SCOTUSblog"
-  },
-  {
-   "title": "What Trump cases might soon return to the Supreme Court?",
-   "link": "https://www.scotusblog.com/2026/11/what-trump-cases-might-soon-return-to-the-supreme-court/",
-   "date": "2026-11-12",
-   "author": "Amy Howe",
-   "summary": "",
-   "source": "SCOTUSblog"
-  },
-  {
-   "title": "Dangerous and unusual",
-   "link": "https://www.scotusblog.com/2026/11/dangerous-and-unusual/",
-   "date": "2026-11-12",
-   "author": "Kelsey Dallas",
-   "summary": "Plus, remembering Richard Posner, “a towering figure in the law.”",
    "source": "SCOTUSblog"
   }
  ]
